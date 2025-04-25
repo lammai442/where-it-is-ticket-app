@@ -1,0 +1,19 @@
+.nav__list-item {
+	list-style-type: none;
+	/* min-width: 80px; */
+	max-width: 150px;
+	padding: 1rem 1.6rem;
+	display: grid;
+	place-content: center;
+}
+
+.nav__icon {
+	color: var(--primary-bg-color);
+	font-size: 2rem;
+	display: grid;
+	place-content: center;
+}
+
+.nav__title {
+	font-family: var(--primary-font);
+}
