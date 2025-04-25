@@ -1,0 +1,50 @@
+.event__box {
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+	font-family: var(--secondary-font);
+}
+
+.event__left-box {
+	flex: 1;
+	max-width: 66px;
+	aspect-ratio: 1;
+	border: 1px solid var(--white-text-color);
+	color: var(--white-text-color);
+	display: grid;
+	place-content: center;
+}
+
+.event__date {
+	text-align: center;
+}
+
+.event__right-box {
+	flex: 3;
+	border-bottom: 1px solid rgb(255, 255, 255, 0.3);
+}
+
+.event__info-title {
+	color: var(--white-text-color);
+	font-size: 1.375rem;
+}
+
+.event__info-place {
+	color: var(--white-text-color);
+	font-size: 0.75rem;
+}
+
+.event__right-info-bottom {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.event__info-time {
+	color: var(--white-text-color);
+	font-size: 0.875rem;
+}
+
+.event__info-price {
+	color: var(--green-text-color);
+}

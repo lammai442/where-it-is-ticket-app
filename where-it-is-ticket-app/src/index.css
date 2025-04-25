@@ -11,6 +11,7 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: 'Sansita One', sans-serif;
 }
 
 :root {
@@ -50,4 +51,8 @@ body {
 	text-decoration: none;
 	color: var(--secondary-text-color);
 	cursor: pointer;
+}
+
+.link--active {
+	color: var(--white-text-color);
 }

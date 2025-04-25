@@ -1,21 +1,25 @@
 import './navItem.css';
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-function NavItem({ text, Icon }) {
-	const [isActive, setIsActive] = useState('false');
-	const { url } = useParams();
 
-	useEffect(() => {
-		setIsActive(url);
-		console.log(isActive);
-	}, [url]);
-
+function NavItem({ text, Icon, isActive }) {
 	return (
 		<li className='nav__list-item'>
 			<figure className='nav__icon-box'>
-				{Icon && <Icon className='nav__icon' />}
+				{Icon && (
+					<Icon
+						className={
+							isActive
+								? 'nav__icon nav__icon--active'
+								: 'nav__icon'
+						}
+					/>
+				)}
 			</figure>
-			<p className='nav__title'>{text}</p>
+			<p
+				className={
+					isActive ? 'nav__title nav__title--active' : 'nav__title'
+				}>
+				{text}
+			</p>
 		</li>
 	);
 }

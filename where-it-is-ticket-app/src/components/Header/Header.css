@@ -1,0 +1,10 @@
+.header {
+	display: grid;
+	place-content: center;
+	padding: 2rem;
+}
+
+.header__title {
+	color: var(--primary-text-color);
+	font-size: 2rem;
+}
