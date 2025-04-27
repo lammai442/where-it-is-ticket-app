@@ -34,7 +34,7 @@ function App() {
 			),
 		},
 		{
-			path: '/event',
+			path: '/event:id',
 			element: (
 				<>
 					<EventPage />

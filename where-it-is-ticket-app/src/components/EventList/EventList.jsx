@@ -13,7 +13,7 @@ function EventList() {
 			{events &&
 				events.events.map((event) => {
 					return (
-						<Link to='/event'>
+						<Link to={`/event/${event.id}`}>
 							<EventItem
 								key={event.id}
 								name={event.name}
