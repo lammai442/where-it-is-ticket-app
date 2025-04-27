@@ -1,6 +1,6 @@
 import './eventItem.css';
 
-function EventItem({ id, name, price, date, from, to, where }) {
+function EventItem({ name, price, date, from, to, where }) {
 	return (
 		<section className='event__box'>
 			<section className='event__left-box'>

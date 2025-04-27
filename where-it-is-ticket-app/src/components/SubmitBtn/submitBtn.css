@@ -1,0 +1,9 @@
+.submit-btn {
+	font-family: var(--secondary-font);
+	width: 100%;
+	background-color: var(--green-bg-color);
+	padding: 1rem 0;
+	font-size: 1.375rem;
+	color: var(--white-text-color);
+	border-radius: 5px;
+}

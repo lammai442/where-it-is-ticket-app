@@ -1,0 +1,36 @@
+.main__flex {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	/* justify-content: space-between; */
+	align-items: center;
+	gap: 2rem;
+}
+
+.main__paragraph {
+	max-width: 200px;
+	text-align: center;
+	font-family: var(--secondary-font);
+	color: var(--white-text-80opacity-color);
+	font-style: var(--italic-style);
+}
+
+.event__info-box {
+	text-align: center;
+}
+
+.event__title {
+	color: var(--secondary-bg-color);
+	font-size: 2.18rem;
+}
+
+.event__subtitle {
+	font-family: var(--secondary-font);
+	font-weight: 800;
+	color: var(--green-text-color);
+}
+.event__paragraph {
+	font-family: var(--secondary-font);
+	color: var(--white-text-80opacity-color);
+	font-style: var(--italic-style);
+}

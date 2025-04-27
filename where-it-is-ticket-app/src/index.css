@@ -18,14 +18,17 @@
 	--primary-bg-color: #231f42;
 	--secondary-bg-color: #f56b9a;
 	--purple-bg-color: #bb6ac9;
+	--green-bg-color: #37aeab;
 
 	--primary-text-color: #f56b9a;
 	--green-text-color: #37aeab;
 	--white-text-color: #ffffff;
+	--white-text-80opacity-color: rgba(255, 255, 255, 0.8);
 	--black-text-color: #000000;
 
 	--primary-font: 'Sansita One', sans-serif;
 	--secondary-font: 'Fira Sans', sans-serif;
+	--italic-style: italic;
 }
 
 body {
@@ -45,6 +48,7 @@ body {
 	flex: 1;
 	display: grid;
 	place-content: center;
+	padding: 0 2rem;
 }
 
 .link {
