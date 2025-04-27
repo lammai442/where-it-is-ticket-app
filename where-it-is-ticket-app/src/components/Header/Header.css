@@ -2,9 +2,21 @@
 	display: grid;
 	place-content: center;
 	padding: 2rem;
+	position: relative;
 }
 
 .header__title {
 	color: var(--primary-text-color);
 	font-size: 2rem;
+}
+
+.header__backBtn {
+	color: var(--secondary-bg-color);
+	font-size: 2rem;
+	background-color: transparent;
+	border: none;
+	position: absolute;
+	top: 20%;
+	left: 5%;
+	padding: 1rem;
 }
