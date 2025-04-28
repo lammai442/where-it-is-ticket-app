@@ -9,19 +9,19 @@ const useCartStore = create((set) => ({
 				(item) => item.id === event.id
 			);
 
+			// Om eventet finns, uppdatera endast qty
 			if (existingEvent) {
-				// Om eventet finns, uppdatera endast qty
 				return {
 					cart: state.cart.map((item) =>
 						item.id === event.id
-							? { ...item, qty: item.qty + event.qty } // Uppdatera qty
+							? { ...item, qty: item.qty + event.qty }
 							: item
 					),
 				};
 			} else {
-				// Om eventet inte finns i cart, lägg till det
+				// Om eventet inte finns i cart, lägg till det med inskickad qty
 				return {
-					cart: [...state.cart, { ...event, qty: 1 }], // Lägg till eventet med qty = 1
+					cart: [...state.cart, { ...event, qty: event.qty }],
 				};
 			}
 		});

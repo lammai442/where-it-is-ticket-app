@@ -2,26 +2,21 @@ import './eventCount.css';
 import { useEffect, useState } from 'react';
 
 function EventCount({ price, qty, handleQtyChange }) {
-	const [totalAmount, setTotalAmount] = useState(price);
+	// Sätter totalAmount från början genom att kolla nuvarande qty för event * price
+	const [totalAmount, setTotalAmount] = useState(price * qty);
 
 	const handleQtyBtn = (e) => {
 		const buttonValue = e.target.value;
-		let newQty = qty;
-
 		if (buttonValue === '-' && qty > 0) {
-			newQty = qty - 1;
+			// Skicka tillbaka med omräknad qty
+			handleQtyChange(qty - 1);
+			// Ändrar totalAmount med nytt värde
+			setTotalAmount(price * (qty - 1));
 		} else if (buttonValue === '+') {
-			newQty = qty + 1;
+			handleQtyChange(qty + 1);
+			setTotalAmount(price * (qty + 1));
 		}
-
-		// Skicka tillbaka newQty för sätta nya värdet
-		handleQtyChange(newQty);
 	};
-
-	// useEffect för att visa nuvarande kostnad
-	useEffect(() => {
-		setTotalAmount(price * qty);
-	}, [qty]); // Uppdatera totalbelopp när qty förändras
 
 	return (
 		<section className='event-count__box'>

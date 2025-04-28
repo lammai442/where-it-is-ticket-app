@@ -1,0 +1,36 @@
+.main__order-page {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.cart__box {
+	width: 100%;
+	color: var(--white-text-color);
+	display: flex;
+	flex-direction: column;
+	gap: 0.7rem;
+	height: 270px;
+	overflow-y: auto;
+}
+
+.summary__box {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.summary__title {
+	text-align: center;
+	font-size: 1.1rem;
+	font-family: var(--secondary-font);
+	color: var(--white-text-80opacity-color);
+}
+
+.summary__amount {
+	text-align: center;
+	font-size: 2rem;
+	color: var(--white-text-color);
+	font-weight: 600;
+	font-family: var(--secondary-font);
+}
