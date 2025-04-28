@@ -2,20 +2,31 @@ import './eventList.css';
 import useEventsStore from '../../stores/useEventsStore';
 import EventItem from '../EventItem/EventItem';
 import { Link } from 'react-router-dom';
+import { useFetch } from '../../hooks/useFetch';
+import { useEffect } from 'react';
 
 function EventList() {
 	const { events } = useEventsStore();
+	// const { events, setEvents, fetchEvents } = useEventsStore();
 
-	console.log(events);
+	// useEffect(() => {
+	// 	if (!events) {
+	// 		// hämta bara om events saknas
+	// 		fetchEvents();
+	// 	}
+	// }, []);
+
+	// if (!events) {
+	// 	return <p style={{ color: '#ffffff' }}>Laddar events...</p>;
+	// }
 
 	return (
 		<section className='event-list'>
 			{events &&
-				events.events.map((event) => {
+				events.map((event) => {
 					return (
-						<Link to='/event'>
+						<Link key={event.id} to={`/event/${event.id}`}>
 							<EventItem
-								key={event.id}
 								name={event.name}
 								price={event.price}
 								date={event.when.date}

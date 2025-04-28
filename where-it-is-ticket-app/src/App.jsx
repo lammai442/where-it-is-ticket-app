@@ -13,7 +13,15 @@ function App() {
 	const { setEvents } = useEventsStore();
 
 	useEffect(() => {
-		setEvents(data);
+		// Lägger till qty : 1 på samtliga objekt från början
+		if (data && data.length > 0) {
+			const dataWithQty = data.map((e) => ({
+				...e,
+				qty: 1,
+			}));
+
+			setEvents(dataWithQty);
+		}
 	}, [data]);
 
 	const router = createBrowserRouter([
@@ -34,7 +42,7 @@ function App() {
 			),
 		},
 		{
-			path: '/event',
+			path: '/event/:id',
 			element: (
 				<>
 					<EventPage />
