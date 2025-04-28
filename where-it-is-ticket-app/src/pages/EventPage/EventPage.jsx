@@ -6,18 +6,42 @@ import useEventsStore from '../../stores/useEventsStore';
 import EventCount from '../../components/EventCount/EventCount';
 import { useEffect, useState } from 'react';
 import SubmitBtn from '../../components/SubmitBtn/SubmitBtn';
+import useCartStore from '../../stores/useCartStore';
 
 function EventPage() {
 	const [event, setEvent] = useState(null);
 	const { id } = useParams();
-	const { events } = useEventsStore();
+	const { events, addQtyToEvent } = useEventsStore();
+	const { cart, addToCart } = useCartStore();
 
+	// useEffect för att hitta rätt event genom id och rendera på sidan
 	useEffect(() => {
 		if (events && events.length > 0) {
 			const foundEvent = events.find((e) => e.id === id);
 			setEvent(foundEvent);
 		}
 	}, [events, id]);
+
+	// Funktion för att uppdatera qty i globala staten events
+	const handleQtyChange = (newQty) => {
+		// Uppdatera endast om det finns skillnad på qty
+		if (event.qty !== newQty) {
+			addQtyToEvent(newQty, id);
+			// Uppdatera event så att den renderas om siffran
+			setEvent((prevEvent) => ({
+				...prevEvent,
+				qty: newQty,
+			}));
+		}
+	};
+
+	const handleSubmit = () => {
+		addToCart(event);
+	};
+
+	useEffect(() => {
+		console.log(cart);
+	}, [cart]);
 
 	return (
 		<div className='page'>
@@ -36,8 +60,16 @@ function EventPage() {
 						<p className='event__paragraph'>@ {event.where}</p>
 					</section>
 
-					<EventCount price={event.price} />
-					<SubmitBtn text={'Lägg i varukorgen'} />
+					<EventCount
+						price={event.price}
+						qty={event.qty}
+						setEvent={setEvent}
+						handleQtyChange={handleQtyChange}
+					/>
+					<SubmitBtn
+						onClick={handleSubmit}
+						text={'Lägg i varukorgen'}
+					/>
 				</main>
 			)}
 			<Footer />

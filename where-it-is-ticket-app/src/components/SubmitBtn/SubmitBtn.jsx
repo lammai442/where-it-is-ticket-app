@@ -1,6 +1,10 @@
 import './submitBtn.css';
-function SubmitBtn({ text }) {
-	return <button className='submit-btn'>{text}</button>;
+function SubmitBtn({ text, onClick }) {
+	return (
+		<button onClick={onClick} className='submit-btn'>
+			{text}
+		</button>
+	);
 }
 
 export default SubmitBtn;
