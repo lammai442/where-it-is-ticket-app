@@ -25,19 +25,20 @@ function OrderPage() {
 			<Header text='Order' />
 			<main className='main main__order-page'>
 				<section className='cart__box'>
-					{cart &&
-						cart.map((item) => {
-							return (
-								<CartItem
-									key={item.id}
-									title={item.name}
-									date={item.when.date}
-									from={item.when.from}
-									to={item.when.to}
-									qty={item.qty}
-								/>
-							);
-						})}
+					{cart && cart.length > 0 ? (
+						cart.map((item) => (
+							<CartItem
+								key={item.id}
+								title={item.name}
+								date={item.when.date}
+								from={item.when.from}
+								to={item.when.to}
+								qty={item.qty}
+							/>
+						))
+					) : (
+						<p>Här är det tomt</p>
+					)}
 				</section>
 				<section className='summary__box'>
 					<h3 className='summary__title'>Totalt värde på order</h3>

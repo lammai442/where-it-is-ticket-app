@@ -46,32 +46,34 @@ function EventPage() {
 	return (
 		<div className='page'>
 			<Header text='Event' backBtn={true}></Header>
-			{event && (
-				<main className='main main__flex'>
-					<p className='main__paragraph'>
-						You are about to score some tickets to
-					</p>
-					<section className='event__info-box'>
-						<h2 className='event__title'>{event.name}</h2>
-						<p className='event__subtitle'>
-							{event.when.date} {event.when.from} -{' '}
-							{event.when.to}
-						</p>
-						<p className='event__paragraph'>@ {event.where}</p>
-					</section>
 
-					<EventCount
-						price={event.price}
-						qty={event.qty}
-						setEvent={setEvent}
-						handleQtyChange={handleQtyChange}
-					/>
-					<SubmitBtn
-						onClick={handleSubmit}
-						text={'Lägg i varukorgen'}
-					/>
-				</main>
-			)}
+			<main className='main main__flex'>
+				<p className='main__paragraph'>
+					You are about to score some tickets to
+				</p>
+				{event && (
+					<>
+						<section className='event__info-box'>
+							<h2 className='event__title'>{event.name}</h2>
+							<p className='event__subtitle'>
+								{event.when.date} {event.when.from} -{' '}
+								{event.when.to}
+							</p>
+							<p className='event__paragraph'>@ {event.where}</p>
+						</section>
+						<EventCount
+							price={event.price}
+							qty={event.qty}
+							setEvent={setEvent}
+							handleQtyChange={handleQtyChange}
+						/>
+						<SubmitBtn
+							onClick={handleSubmit}
+							text={'Lägg i varukorgen'}
+						/>
+					</>
+				)}
+			</main>
 			<Footer />
 		</div>
 	);
