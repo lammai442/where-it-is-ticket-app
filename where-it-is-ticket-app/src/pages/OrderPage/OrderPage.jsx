@@ -8,6 +8,7 @@ import SubmitBtn from '../../components/SubmitBtn/SubmitBtn';
 import { CiCirclePlus } from 'react-icons/ci';
 import { Link } from 'react-router-dom';
 import useTicketsStore from '../../stores/useTicketsStore';
+import { v4 as uuidv4 } from 'uuid';
 function OrderPage() {
 	const { cart, updateQtyToCart, emptyCart } = useCartStore();
 	const [totalAmount, setTotalAmount] = useState(0);
@@ -41,7 +42,24 @@ function OrderPage() {
 	};
 
 	const handleSendOrder = () => {
-		addOrder(cart);
+		const newReceiptId = uuidv4();
+
+		const cartWithId = cart.map((event) => {
+			// Skapar en ny unik id för denna ticket
+			const newTicketsId = uuidv4();
+			return {
+				...event,
+				ticketsId: newTicketsId,
+			};
+		});
+
+		const ticket = {
+			receiptId: newReceiptId,
+			events: cartWithId,
+		};
+		console.log(ticket);
+
+		addOrder(ticket);
 		emptyCart();
 	};
 

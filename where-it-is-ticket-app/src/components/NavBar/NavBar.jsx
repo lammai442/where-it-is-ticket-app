@@ -33,6 +33,7 @@ function NavBar() {
 							text={'Order'}
 							Icon={RiShoppingBasketFill}
 							isActive={isActive}
+							cartCounter={true}
 						/>
 					)}
 				</NavLink>
