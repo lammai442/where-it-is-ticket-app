@@ -1,4 +1,8 @@
 # React + Vite
 
 Bibliotek
-React Icons
+axios
+zustand
+react-router-dom
+react-icons
+uuid
