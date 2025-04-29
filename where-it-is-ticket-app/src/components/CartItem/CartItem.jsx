@@ -1,6 +1,16 @@
 import './cartItem.css';
 
-function CartItem({ title, date, from, to, qty }) {
+function CartItem({ title, date, from, to, qty, handleQtyChange, id }) {
+	const handleQtyBtn = (e) => {
+		const buttonValue = e.target.value;
+		if (buttonValue === '-') {
+			// Skicka tillbaka med omräknad qty
+			handleQtyChange(qty - 1, id);
+		} else if (buttonValue === '+') {
+			handleQtyChange(qty + 1, id);
+		}
+	};
+
 	return (
 		<section className='cart-item__box'>
 			<section className='cart-item__top'>
@@ -10,11 +20,17 @@ function CartItem({ title, date, from, to, qty }) {
 				</p>
 			</section>
 			<section className='cart-item__bottom'>
-				<button className='cart-item__count-btn' value='-'>
+				<button
+					onClick={handleQtyBtn}
+					className='cart-item__count-btn'
+					value='-'>
 					-
 				</button>
 				<span className='cart-item__number'>{qty}</span>
-				<button className='cart-item__count-btn' value='+'>
+				<button
+					onClick={handleQtyBtn}
+					className='cart-item__count-btn'
+					value='+'>
 					+
 				</button>
 			</section>

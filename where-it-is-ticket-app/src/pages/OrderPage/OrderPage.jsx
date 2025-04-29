@@ -5,8 +5,10 @@ import CartItem from '../../components/CartItem/CartItem';
 import { useEffect, useState } from 'react';
 import useCartStore from '../../stores/useCartStore';
 import SubmitBtn from '../../components/SubmitBtn/SubmitBtn';
+import { CiCirclePlus } from 'react-icons/ci';
+import { Link } from 'react-router-dom';
 function OrderPage() {
-	const { cart } = useCartStore();
+	const { cart, updateQtyToCart } = useCartStore();
 	const [totalAmount, setTotalAmount] = useState(0);
 
 	useEffect(() => {
@@ -20,6 +22,22 @@ function OrderPage() {
 	}, [cart, totalAmount]);
 	console.log(cart);
 
+	// Funktion för att uppdatera qty i globala staten events
+	const handleQtyChange = (newQty, id) => {
+		console.log('handlyQtyChange');
+		console.log(newQty + id);
+
+		const match = cart.find((event) => event.id === id);
+		console.log(match);
+
+		if (match) {
+			// Uppdatera endast om det finns skillnad på qty
+			if (match.qty !== newQty) {
+				updateQtyToCart(newQty, id);
+			}
+		}
+	};
+
 	return (
 		<div className='page'>
 			<Header text='Order' />
@@ -29,22 +47,42 @@ function OrderPage() {
 						cart.map((item) => (
 							<CartItem
 								key={item.id}
+								id={item.id}
 								title={item.name}
 								date={item.when.date}
 								from={item.when.from}
 								to={item.when.to}
 								qty={item.qty}
+								handleQtyChange={handleQtyChange}
 							/>
 						))
 					) : (
-						<p>Här är det tomt</p>
+						<section className='cart__empty-box'>
+							<p className='cart__empty-msg'>
+								Här ekar det tomt på events.
+							</p>
+							<p className='cart__empty-msg'>
+								Ta mig till min nästa upplevelse!
+							</p>
+							<Link className='link__order-page' to='/events'>
+								<button className='cart__addEventBtn'>
+									<CiCirclePlus />
+								</button>
+							</Link>
+						</section>
 					)}
 				</section>
 				<section className='summary__box'>
-					<h3 className='summary__title'>Totalt värde på order</h3>
-					<p className='summary__amount'>{totalAmount} sek</p>
+					{cart && cart.length > 0 ? (
+						<>
+							<h3 className='summary__title'>
+								Totalt värde på order
+							</h3>
+							<p className='summary__amount'>{totalAmount} sek</p>
+							<SubmitBtn text='Skicka order' />
+						</>
+					) : null}
 				</section>
-				<SubmitBtn text='Skicka order' />
 			</main>
 			<Footer />
 		</div>

@@ -26,6 +26,22 @@ const useCartStore = create((set) => ({
 			}
 		});
 	},
+	updateQtyToCart: (qty, id) => {
+		set((state) => {
+			// Om qty är 0 från order-page så filtreras eventet från cart
+			if (qty === 0) {
+				return {
+					cart: state.cart.filter((event) => event.id !== id),
+				};
+			}
+			// Annars körs denna som ändrar värdet eventets qty
+			return {
+				cart: state.cart.map((event) =>
+					event.id === id ? { ...event, qty: qty } : event
+				),
+			};
+		});
+	},
 }));
 
 export default useCartStore;

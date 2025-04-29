@@ -14,6 +14,30 @@
 	overflow-y: auto;
 }
 
+.cart__empty-box {
+	margin-top: 35%;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.cart__empty-msg {
+	text-align: center;
+}
+
+.link__order-page {
+	display: grid;
+	place-content: center;
+}
+
+.cart__addEventBtn {
+	background-color: transparent;
+	border: none;
+	color: var(--white-text-color);
+	font-size: 3rem;
+	padding: 1rem 0;
+}
+
 .summary__box {
 	display: flex;
 	flex-direction: column;
