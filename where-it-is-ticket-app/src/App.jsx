@@ -13,7 +13,7 @@ function App() {
 	const { setEvents } = useEventsStore();
 
 	useEffect(() => {
-		// Lägger till qty : 1 på samtliga objekt från början
+		// Lägger till qty : 1 på samtliga objekt från början så att event visar default en vald biljett
 		if (data && data.length > 0) {
 			const dataWithQty = data.map((e) => ({
 				...e,
