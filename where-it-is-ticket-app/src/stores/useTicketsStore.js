@@ -1,6 +1,9 @@
-import { create } from "zustand";
+import { create } from 'zustand';
 
 const useTicketsStore = create((set) => ({
-    tickets: []
-    addToTickets:() => set(newTickets) => ({tickets : newTickets})
-}))
+	tickets: [],
+	addOrder: (newTickets) =>
+		set((state) => ({ tickets: [...state.tickets, newTickets] })),
+}));
+
+export default useTicketsStore;

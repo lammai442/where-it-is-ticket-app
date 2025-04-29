@@ -7,9 +7,11 @@ import useCartStore from '../../stores/useCartStore';
 import SubmitBtn from '../../components/SubmitBtn/SubmitBtn';
 import { CiCirclePlus } from 'react-icons/ci';
 import { Link } from 'react-router-dom';
+import useTicketsStore from '../../stores/useTicketsStore';
 function OrderPage() {
-	const { cart, updateQtyToCart } = useCartStore();
+	const { cart, updateQtyToCart, emptyCart } = useCartStore();
 	const [totalAmount, setTotalAmount] = useState(0);
+	const { addOrder } = useTicketsStore();
 
 	useEffect(() => {
 		let eventAmount = 0;
@@ -19,8 +21,8 @@ function OrderPage() {
 		});
 
 		setTotalAmount(eventAmount);
+		console.log(cart);
 	}, [cart, totalAmount]);
-	console.log(cart);
 
 	// Funktion för att uppdatera qty i globala staten events
 	const handleQtyChange = (newQty, id) => {
@@ -36,6 +38,11 @@ function OrderPage() {
 				updateQtyToCart(newQty, id);
 			}
 		}
+	};
+
+	const handleSendOrder = () => {
+		addOrder(cart);
+		emptyCart();
 	};
 
 	return (
@@ -79,7 +86,10 @@ function OrderPage() {
 								Totalt värde på order
 							</h3>
 							<p className='summary__amount'>{totalAmount} sek</p>
-							<SubmitBtn text='Skicka order' />
+							<SubmitBtn
+								onClick={handleSendOrder}
+								text='Skicka order'
+							/>
 						</>
 					) : null}
 				</section>

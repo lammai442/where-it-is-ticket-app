@@ -42,6 +42,7 @@ const useCartStore = create((set) => ({
 			};
 		});
 	},
+	emptyCart: () => set({ cart: [] }),
 }));
 
 export default useCartStore;
