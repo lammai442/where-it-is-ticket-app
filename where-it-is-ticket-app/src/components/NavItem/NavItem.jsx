@@ -1,8 +1,10 @@
+import CartCounter from '../CartCounter/CartCounter';
 import './navItem.css';
 
-function NavItem({ text, Icon, isActive }) {
+function NavItem({ text, Icon, isActive, cartCounter }) {
 	return (
 		<li className='nav__list-item'>
+			{cartCounter && <CartCounter />}
 			<figure className='nav__icon-box'>
 				{Icon && (
 					<Icon
