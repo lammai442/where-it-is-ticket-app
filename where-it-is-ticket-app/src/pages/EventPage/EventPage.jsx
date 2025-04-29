@@ -12,7 +12,7 @@ function EventPage() {
 	const [event, setEvent] = useState(null);
 	const { id } = useParams();
 	const { events, addQtyToEvent } = useEventsStore();
-	const { cart, addToCart } = useCartStore();
+	const { addToCart } = useCartStore();
 
 	// useEffect för att hitta rätt event genom id och rendera på sidan
 	useEffect(() => {
@@ -35,13 +35,9 @@ function EventPage() {
 		}
 	};
 
-	const handleSubmit = () => {
+	const handleSubmitBtn = () => {
 		addToCart(event);
 	};
-
-	useEffect(() => {
-		console.log(cart);
-	}, [cart]);
 
 	return (
 		<div className='page'>
@@ -68,7 +64,7 @@ function EventPage() {
 							handleQtyChange={handleQtyChange}
 						/>
 						<SubmitBtn
-							onClick={handleSubmit}
+							onClick={handleSubmitBtn}
 							text={'Lägg i varukorgen'}
 						/>
 					</>

@@ -20,18 +20,12 @@ function OrderPage() {
 		cart.forEach((item) => {
 			eventAmount += item.price * item.qty;
 		});
-
 		setTotalAmount(eventAmount);
-		console.log(cart);
 	}, [cart, totalAmount]);
 
 	// Funktion för att uppdatera qty i globala staten events
 	const handleQtyChange = (newQty, id) => {
-		console.log('handlyQtyChange');
-		console.log(newQty + id);
-
 		const match = cart.find((event) => event.id === id);
-		console.log(match);
 
 		if (match) {
 			// Uppdatera endast om det finns skillnad på qty
@@ -57,7 +51,6 @@ function OrderPage() {
 			receiptId: newReceiptId,
 			events: cartWithId,
 		};
-		console.log(ticket);
 
 		addOrder(ticket);
 		emptyCart();

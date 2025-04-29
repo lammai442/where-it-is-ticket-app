@@ -8,7 +8,7 @@ function TicketsPage() {
 		console.log(tickets);
 	}
 	return (
-		<div className='page'>
+		<div className='page page__tickets'>
 			<main className='main'>
 				<section className='hero'></section>
 			</main>
