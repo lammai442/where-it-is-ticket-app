@@ -6,3 +6,4 @@ zustand
 react-router-dom
 react-icons
 uuid
+swiper

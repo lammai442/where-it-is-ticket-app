@@ -48,6 +48,14 @@ body {
 	justify-content: space-between;
 }
 
+.page--gradient {
+	background: linear-gradient(
+		to bottom,
+		var(--secondary-bg-color) 0%,
+		var(--primary-bg-color) 80%
+	);
+}
+
 .main {
 	flex: 1;
 	display: grid;

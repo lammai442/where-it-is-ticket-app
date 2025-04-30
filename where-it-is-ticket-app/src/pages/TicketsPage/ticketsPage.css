@@ -1,7 +1,0 @@
-.page__tickets {
-	background: linear-gradient(
-		to bottom,
-		var(--secondary-bg-color) 0%,
-		var(--primary-bg-color) 80%
-	);
-}

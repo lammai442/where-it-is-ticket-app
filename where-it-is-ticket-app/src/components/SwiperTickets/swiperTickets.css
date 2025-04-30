@@ -16,6 +16,15 @@
 	background-color: var(--green-bg-color);
 }
 
+.swiper .swiper-slide {
+	opacity: 0.5;
+	transition: opacity 1s ease;
+}
+
+.swiper .swiper-slide-active {
+	opacity: 1;
+}
+
 .order__box {
 	width: 100%;
 	padding: 3rem;

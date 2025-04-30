@@ -5,7 +5,7 @@ import Header from '../../components/Header/Header';
 
 function TicketsPage() {
 	return (
-		<div className='page page__tickets'>
+		<div className='page page--gradient'>
 			<Header text={'Ordrar'} ticketHeader={true}></Header>
 			<main className='main'>
 				<SwiperTickets />

@@ -2,8 +2,6 @@ import './eventList.css';
 import useEventsStore from '../../stores/useEventsStore';
 import EventItem from '../EventItem/EventItem';
 import { Link } from 'react-router-dom';
-import { useFetch } from '../../hooks/useFetch';
-import { useEffect } from 'react';
 
 function EventList() {
 	const { events } = useEventsStore();

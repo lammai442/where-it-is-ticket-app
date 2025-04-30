@@ -1,0 +1,38 @@
+.swiper__ticket {
+	max-height: 450px;
+	/* padding: 1rem; */
+	width: 330px;
+	/* background-color: red; */
+	overflow-y: auto;
+	position: relative;
+}
+
+.ticket__box {
+	height: 500px;
+	max-width: 285px;
+	padding: 3rem;
+	border: 1px solid white;
+	padding: 1rem;
+	border-radius: 5px;
+	background-color: var(--white-bg-color);
+	display: flex;
+	flex-direction: column;
+}
+
+.swiper__ticket .swiper-slide {
+	opacity: 0.5;
+	transition: opacity 1s ease;
+}
+
+.swiper__ticket .swiper-slide-active {
+	opacity: 1;
+}
+
+.ticket__box-title {
+	font-size: 0.625rem;
+	font-family: var(--secondary-font);
+}
+
+.ticket-what-title {
+	font-size: 1.625rem;
+}
