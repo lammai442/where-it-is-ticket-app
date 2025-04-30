@@ -7,18 +7,6 @@ import { useEffect } from 'react';
 
 function EventList() {
 	const { events } = useEventsStore();
-	// const { events, setEvents, fetchEvents } = useEventsStore();
-
-	// useEffect(() => {
-	// 	if (!events) {
-	// 		// hämta bara om events saknas
-	// 		fetchEvents();
-	// 	}
-	// }, []);
-
-	// if (!events) {
-	// 	return <p style={{ color: '#ffffff' }}>Laddar events...</p>;
-	// }
 
 	return (
 		<section className='event-list'>

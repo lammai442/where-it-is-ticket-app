@@ -7,3 +7,19 @@
 	color: var(--white-text-color);
 	border-radius: 5px;
 }
+
+@keyframes pop {
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.02);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+
+.submit-btn__animation {
+	animation: pop 0.3s ease;
+}

@@ -7,12 +7,13 @@ import EventCount from '../../components/EventCount/EventCount';
 import { useEffect, useState } from 'react';
 import SubmitBtn from '../../components/SubmitBtn/SubmitBtn';
 import useCartStore from '../../stores/useCartStore';
+import SeatSelector from '../../components/SeatSelection/SeatSelection';
 
 function EventPage() {
 	const [event, setEvent] = useState(null);
 	const { id } = useParams();
 	const { events, addQtyToEvent } = useEventsStore();
-	const { cart, addToCart } = useCartStore();
+	const { addToCart } = useCartStore();
 
 	// useEffect för att hitta rätt event genom id och rendera på sidan
 	useEffect(() => {
@@ -35,17 +36,13 @@ function EventPage() {
 		}
 	};
 
-	const handleSubmit = () => {
+	const handleSubmitBtn = () => {
 		addToCart(event);
 	};
 
-	useEffect(() => {
-		console.log(cart);
-	}, [cart]);
-
 	return (
 		<div className='page'>
-			<Header text='Event' backBtn={true}></Header>
+			<Header text='Event' backBtn={true} linkTo={'events'}></Header>
 
 			<main className='main main__flex'>
 				<p className='main__paragraph'>
@@ -67,8 +64,10 @@ function EventPage() {
 							setEvent={setEvent}
 							handleQtyChange={handleQtyChange}
 						/>
+
+						<SeatSelector />
 						<SubmitBtn
-							onClick={handleSubmit}
+							onClick={handleSubmitBtn}
 							text={'Lägg i varukorgen'}
 						/>
 					</>

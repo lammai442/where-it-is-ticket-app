@@ -7,13 +7,14 @@ import TicketsPage from './pages/TicketsPage/TicketsPage';
 import { useFetch } from './hooks/useFetch';
 import { useEffect } from 'react';
 import useEventsStore from './stores/useEventsStore.js';
+import SingleTicketPage from './pages/SingleTicketPage/SingleTicketPage.jsx';
 
 function App() {
 	const { data } = useFetch('https://santosnr6.github.io/Data/events.json');
 	const { setEvents } = useEventsStore();
 
 	useEffect(() => {
-		// Lägger till qty : 1 på samtliga objekt från början så att event visar default en vald biljett
+		// Lägger till qty : 1 på samtliga objekt från början så att i eventPage visar default en vald biljett
 		if (data && data.length > 0) {
 			const dataWithQty = data.map((e) => ({
 				...e,
@@ -62,6 +63,14 @@ function App() {
 			element: (
 				<>
 					<TicketsPage />
+				</>
+			),
+		},
+		{
+			path: '/single-ticket/:orderId',
+			element: (
+				<>
+					<SingleTicketPage />
 				</>
 			),
 		},

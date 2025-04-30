@@ -1,16 +1,14 @@
 import './ticketsPage.css';
 import Footer from '../../components/Footer/Footer';
-import useTicketsStore from '../../stores/useTicketsStore';
-function TicketsPage() {
-	const { tickets } = useTicketsStore();
+import SwiperTickets from '../../components/SwiperTickets/SwiperTickets';
+import Header from '../../components/Header/Header';
 
-	if (tickets) {
-		console.log(tickets);
-	}
+function TicketsPage() {
 	return (
-		<div className='page'>
+		<div className='page page__tickets'>
+			<Header text={'Ordrar'} ticketHeader={true}></Header>
 			<main className='main'>
-				<section className='hero'></section>
+				<SwiperTickets />
 			</main>
 			<Footer />
 		</div>

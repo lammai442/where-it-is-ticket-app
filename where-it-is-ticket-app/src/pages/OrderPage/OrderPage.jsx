@@ -20,18 +20,12 @@ function OrderPage() {
 		cart.forEach((item) => {
 			eventAmount += item.price * item.qty;
 		});
-
 		setTotalAmount(eventAmount);
-		console.log(cart);
 	}, [cart, totalAmount]);
 
 	// Funktion för att uppdatera qty i globala staten events
 	const handleQtyChange = (newQty, id) => {
-		console.log('handlyQtyChange');
-		console.log(newQty + id);
-
 		const match = cart.find((event) => event.id === id);
-		console.log(match);
 
 		if (match) {
 			// Uppdatera endast om det finns skillnad på qty
@@ -42,11 +36,11 @@ function OrderPage() {
 	};
 
 	const handleSendOrder = () => {
-		const newReceiptId = uuidv4();
+		const newOrdertId = uuidv4().slice(0, 8);
 
 		const cartWithId = cart.map((event) => {
 			// Skapar en ny unik id för denna ticket
-			const newTicketsId = uuidv4();
+			const newTicketsId = uuidv4().slice(0, 8);
 			return {
 				...event,
 				ticketsId: newTicketsId,
@@ -54,10 +48,9 @@ function OrderPage() {
 		});
 
 		const ticket = {
-			receiptId: newReceiptId,
+			orderId: newOrdertId,
 			events: cartWithId,
 		};
-		console.log(ticket);
 
 		addOrder(ticket);
 		emptyCart();
