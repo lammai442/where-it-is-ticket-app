@@ -22,7 +22,9 @@
 	--white-bg-color: #ffffff;
 
 	--primary-text-color: #f56b9a;
+	--secondary-text-color: #231f42;
 	--green-text-color: #37aeab;
+	--light-green-text-color: rgba(64, 223, 217, 0.848);
 	--white-text-color: #ffffff;
 	--white-text-80opacity-color: rgba(255, 255, 255, 0.8);
 	--black-text-color: #000000;
@@ -61,4 +63,16 @@ body {
 
 .link--active {
 	color: var(--white-text-color);
+}
+
+.simple-click {
+	position: relative;
+	overflow: hidden;
+}
+
+.simple-click:active::after {
+	content: '';
+	position: absolute;
+	background: rgba(0, 0, 0, 0.1);
+	inset: 0;
 }

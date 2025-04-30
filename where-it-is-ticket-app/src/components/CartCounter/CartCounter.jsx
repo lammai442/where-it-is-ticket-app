@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 function CartCounter() {
 	const { cart } = useCartStore();
 	const [cartBalance, setCartBalance] = useState(null);
+	const [popAnimation, setPopAnimation] = useState(false);
 
 	// När cart ändras så kommer cartCounter att synas/tas bort
 	useEffect(() => {
@@ -25,13 +26,13 @@ function CartCounter() {
 
 	return (
 		cartBalance && (
-			<>
-				<div className='cart-counter__box'>
-					<span className='cart-counter__number'>{cartBalance}</span>
-				</div>
-			</>
+			<div
+				className={`cart-counter__box ${
+					popAnimation ? 'cart-counter__pop' : ''
+				}`}>
+				<span className='cart-counter__number'>{cartBalance}</span>
+			</div>
 		)
 	);
 }
-
 export default CartCounter;

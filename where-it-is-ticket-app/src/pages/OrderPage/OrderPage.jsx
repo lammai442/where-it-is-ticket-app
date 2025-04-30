@@ -36,11 +36,11 @@ function OrderPage() {
 	};
 
 	const handleSendOrder = () => {
-		const newReceiptId = uuidv4();
+		const newOrdertId = uuidv4().slice(0, 8);
 
 		const cartWithId = cart.map((event) => {
 			// Skapar en ny unik id för denna ticket
-			const newTicketsId = uuidv4();
+			const newTicketsId = uuidv4().slice(0, 8);
 			return {
 				...event,
 				ticketsId: newTicketsId,
@@ -48,7 +48,7 @@ function OrderPage() {
 		});
 
 		const ticket = {
-			receiptId: newReceiptId,
+			orderId: newOrdertId,
 			events: cartWithId,
 		};
 
