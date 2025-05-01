@@ -8,6 +8,7 @@ import './singleTicketPage.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Scrollbar } from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
+import Barcode from 'react-barcode';
 
 function SingleTicketPage() {
 	const { tickets } = useTicketsStore();
@@ -15,6 +16,7 @@ function SingleTicketPage() {
 	const { orderId } = useParams();
 
 	useEffect(() => {
+		// UseEffect i början för att hitta ordern utifrån orderId och sätter eventet
 		if (tickets) {
 			const findOrder = tickets.find(
 				(ticket) => ticket.orderId === orderId
@@ -22,7 +24,6 @@ function SingleTicketPage() {
 			setEvents(findOrder);
 		}
 	}, [orderId]);
-	console.log(events);
 
 	return (
 		<div className='page page--gradient'>
@@ -38,12 +39,7 @@ function SingleTicketPage() {
 					modules={[Pagination, Scrollbar]}
 					spaceBetween={8}
 					slidesPerView={1.15}
-					centeredSlides={true}
-					// pagination={{
-					// 	clickable: true,
-					// 	type: 'bullets',
-					// }}
-				>
+					centeredSlides={true}>
 					{events &&
 						events.events.length > 0 &&
 						events.events.map((event) => {
@@ -54,42 +50,54 @@ function SingleTicketPage() {
 											<h2 className='ticket__box-title'>
 												WHAT
 											</h2>
-											<p className='ticket-what-title'>
+											<p className='ticket-what__title'>
 												{event.name}
 											</p>
 										</section>
-										<section>
+										<section className='ticket-where__box'>
 											<h2 className='ticket__box-title'>
 												WHERE
 											</h2>
-											<p>{event.where}</p>
+											<p className='ticket-where__title'>
+												{event.where}
+											</p>
 										</section>
-										<section>
-											<section>
+										<section className='ticket__small-boxes'>
+											<section className='ticket__small-box'>
 												<h2 className='ticket__box-title'>
 													WHEN
-													<p>{event.when.date}</p>
 												</h2>
+												<p className='ticket__small-box-paragraph'>
+													{event.when.newDate.day}{' '}
+													{event.when.newDate.month}
+												</p>
 											</section>
-											<section>
+											<section className='ticket__small-box ticket__small-box--dotted'>
 												<h2 className='ticket__box-title'>
 													FROM
-													<p>{event.when.from}</p>
 												</h2>
+												<p className='ticket__small-box-paragraph'>
+													{event.when.from}
+												</p>
 											</section>
-											<section>
+											<section className='ticket__small-box'>
 												<h2 className='ticket__box-title'>
 													TO
-													<p>{event.when.to}</p>
 												</h2>
+												<p className='ticket__small-box-paragraph'>
+													{event.when.to}
+												</p>
 											</section>
-											<section>
-												<h2 className='ticket__box-title'>
-													INFO
-												</h2>
-												<p>Section C</p>
-											</section>
-											<section>{event.ticketsId}</section>
+										</section>
+										<section className='ticket__info-box'>
+											<h2 className='ticket__box-title'>
+												INFO
+											</h2>
+											<p>Section C</p>
+										</section>
+										<section className='ticket__bar-code-box'>
+											<img src='' alt='' />
+											<p>{event.ticketsId}</p>
 										</section>
 									</section>
 								</SwiperSlide>

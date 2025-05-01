@@ -12,6 +12,10 @@ const useTicketsStore = create((set) => ({
 					where: 'Götaplatsen',
 					when: {
 						date: '13 December',
+						newDate: {
+							day: '13',
+							month: 'Dec',
+						},
 						from: '15.00',
 						to: '16:00',
 					},
@@ -30,6 +34,10 @@ const useTicketsStore = create((set) => ({
 					where: 'Kungliga operan',
 					when: {
 						date: '15 November',
+						newDate: {
+							day: '15',
+							month: 'Nov',
+						},
 						from: '18.00',
 						to: '20:00',
 					},
@@ -48,6 +56,10 @@ const useTicketsStore = create((set) => ({
 					where: 'Kungliga operan',
 					when: {
 						date: '15 November',
+						newDate: {
+							day: '15',
+							month: 'Nov',
+						},
 						from: '18.00',
 						to: '20:00',
 					},
@@ -66,6 +78,10 @@ const useTicketsStore = create((set) => ({
 					where: 'Kungliga operan',
 					when: {
 						date: '15 November',
+						newDate: {
+							day: '15',
+							month: 'Nov',
+						},
 						from: '18.00',
 						to: '20:00',
 					},
@@ -79,6 +95,10 @@ const useTicketsStore = create((set) => ({
 					where: 'Kungliga operan',
 					when: {
 						date: '15 November',
+						newDate: {
+							day: '15',
+							month: 'Nov',
+						},
 						from: '18.00',
 						to: '20:00',
 					},
@@ -92,6 +112,10 @@ const useTicketsStore = create((set) => ({
 					where: 'Kungliga operan',
 					when: {
 						date: '15 November',
+						newDate: {
+							day: '15',
+							month: 'Nov',
+						},
 						from: '18.00',
 						to: '20:00',
 					},
@@ -105,6 +129,10 @@ const useTicketsStore = create((set) => ({
 					where: 'Kungliga operan',
 					when: {
 						date: '15 November',
+						newDate: {
+							day: '15',
+							month: 'Nov',
+						},
 						from: '18.00',
 						to: '20:00',
 					},
@@ -118,6 +146,10 @@ const useTicketsStore = create((set) => ({
 					where: 'Kungliga operan',
 					when: {
 						date: '15 November',
+						newDate: {
+							day: '15',
+							month: 'Nov',
+						},
 						from: '18.00',
 						to: '20:00',
 					},
@@ -136,6 +168,10 @@ const useTicketsStore = create((set) => ({
 					where: 'Kungliga operan',
 					when: {
 						date: '15 November',
+						newDate: {
+							day: '15',
+							month: 'Nov',
+						},
 						from: '18.00',
 						to: '20:00',
 					},
@@ -149,6 +185,10 @@ const useTicketsStore = create((set) => ({
 					where: 'Kungliga operan',
 					when: {
 						date: '15 November',
+						newDate: {
+							day: '15',
+							month: 'Nov',
+						},
 						from: '18.00',
 						to: '20:00',
 					},
@@ -162,6 +202,10 @@ const useTicketsStore = create((set) => ({
 					where: 'Kungliga operan',
 					when: {
 						date: '15 November',
+						newDate: {
+							day: '15',
+							month: 'Nov',
+						},
 						from: '18.00',
 						to: '20:00',
 					},
@@ -175,6 +219,10 @@ const useTicketsStore = create((set) => ({
 					where: 'Kungliga operan',
 					when: {
 						date: '15 November',
+						newDate: {
+							day: '15',
+							month: 'Nov',
+						},
 						from: '18.00',
 						to: '20:00',
 					},
@@ -187,7 +235,11 @@ const useTicketsStore = create((set) => ({
 					price: 300,
 					where: 'Kungliga operan',
 					when: {
-						date: '15 November',
+						date: '1 November',
+						newDate: {
+							day: '1',
+							month: 'Nov',
+						},
 						from: '18.00',
 						to: '20:00',
 					},

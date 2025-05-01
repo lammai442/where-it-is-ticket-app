@@ -28,6 +28,13 @@
 	--white-text-color: #ffffff;
 	--white-text-80opacity-color: rgba(255, 255, 255, 0.8);
 	--black-text-color: #000000;
+	--black-text-70opacity-color: rgb(0, 0, 0, 0.7);
+	--black-text-60opacity-color: rgb(0, 0, 0, 0.6);
+	--black-text-40opacity-color: rgb(0, 0, 0, 0.4);
+	--black-text-12opacity-color: rgb(0, 0, 0, 0.12);
+	--black-text-9opacity-color: rgb(0, 0, 0, 0.09);
+	--black-text-6opacity-color: rgb(0, 0, 0, 0.06);
+	--black-text-3opacity-color: rgb(0, 0, 0, 0.03);
 
 	--primary-font: 'Sansita One', sans-serif;
 	--secondary-font: 'Fira Sans', sans-serif;

@@ -1,8 +1,6 @@
 .swiper__ticket {
-	max-height: 450px;
-	/* padding: 1rem; */
+	height: 400px;
 	width: 330px;
-	/* background-color: red; */
 	overflow-y: auto;
 	position: relative;
 }
@@ -10,9 +8,7 @@
 .ticket__box {
 	height: 500px;
 	max-width: 285px;
-	padding: 3rem;
 	border: 1px solid white;
-	padding: 1rem;
 	border-radius: 5px;
 	background-color: var(--white-bg-color);
 	display: flex;
@@ -28,11 +24,62 @@
 	opacity: 1;
 }
 
+.ticket-what__box,
+.ticket-where__box,
+.ticket__info-box {
+	display: flex;
+	flex-direction: column;
+	gap: 0.7rem;
+	border-bottom: 2px dotted var(--black-text-40opacity-color);
+	padding: 1rem;
+}
+
 .ticket__box-title {
 	font-size: 0.625rem;
 	font-family: var(--secondary-font);
+	color: var(--black-text-40opacity-color);
 }
 
-.ticket-what-title {
+.ticket-what__title {
 	font-size: 1.625rem;
+	color: var(--primary-text-color);
+}
+
+.ticket-where__box {
+	background-color: var(--black-text-3opacity-color);
+}
+
+.ticket-where__title {
+	font-size: 1.125rem;
+	font-family: var(--secondary-font);
+	font-weight: 600;
+	color: var(--black-text-70opacity-color);
+}
+
+.ticket__small-boxes {
+	display: flex;
+	border-bottom: 2px dotted var(--black-text-40opacity-color);
+	background-color: var(--black-text-6opacity-color);
+}
+
+.ticket__small-box {
+	flex: 1;
+	padding: 0.8rem;
+}
+
+.ticket__small-box--dotted {
+	border-left: 2px dotted var(--black-text-40opacity-color);
+	border-right: 2px dotted var(--black-text-40opacity-color);
+}
+
+.ticket__small-box-paragraph {
+	font-family: var(--secondary-font);
+}
+
+.ticket__info-box {
+	background-color: var(--black-text-9opacity-color);
+}
+
+.ticket__bar-code-box {
+	background-color: var(--black-text-12opacity-color);
 }

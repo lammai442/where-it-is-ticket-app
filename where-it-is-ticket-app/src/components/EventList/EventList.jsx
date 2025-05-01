@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 function EventList() {
 	const { events } = useEventsStore();
+	console.log(events);
 
 	return (
 		<section className='event-list'>
@@ -15,10 +16,11 @@ function EventList() {
 							<EventItem
 								name={event.name}
 								price={event.price}
-								date={event.when.date}
+								date={event.when.newDate.day}
 								from={event.when.from}
 								to={event.when.to}
 								where={event.where}
+								month={event.when.newDate.month}
 							/>
 						</Link>
 					);
