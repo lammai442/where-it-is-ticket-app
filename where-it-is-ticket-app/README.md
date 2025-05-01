@@ -7,3 +7,4 @@ react-router-dom
 react-icons
 uuid
 swiper
+react-barcode

@@ -61,34 +61,36 @@ function OrderPage() {
 			<Header text='Order' />
 			<main className='main main__order-page'>
 				<section className='cart__box'>
-					{cart && cart.length > 0 ? (
-						cart.map((item) => (
-							<CartItem
-								key={item.id}
-								id={item.id}
-								title={item.name}
-								date={item.when.date}
-								from={item.when.from}
-								to={item.when.to}
-								qty={item.qty}
-								handleQtyChange={handleQtyChange}
-							/>
-						))
-					) : (
-						<section className='cart__empty-box'>
-							<p className='cart__empty-msg'>
-								Här ekar det tomt på events.
-							</p>
-							<p className='cart__empty-msg'>
-								Ta mig till min nästa upplevelse!
-							</p>
-							<Link className='link__order-page' to='/events'>
-								<button className='cart__addEventBtn'>
-									<CiCirclePlus />
-								</button>
-							</Link>
-						</section>
-					)}
+					<section className='cart__item-box'>
+						{cart && cart.length > 0 ? (
+							cart.map((item) => (
+								<CartItem
+									key={item.id}
+									id={item.id}
+									title={item.name}
+									date={item.when.date}
+									from={item.when.from}
+									to={item.when.to}
+									qty={item.qty}
+									handleQtyChange={handleQtyChange}
+								/>
+							))
+						) : (
+							<section className='cart__empty-box'>
+								<p className='cart__empty-msg'>
+									Här ekar det tomt på events.
+								</p>
+								<p className='cart__empty-msg'>
+									Ta mig till min nästa upplevelse!
+								</p>
+								<Link className='link__order-page' to='/events'>
+									<button className='cart__addEventBtn'>
+										<CiCirclePlus />
+									</button>
+								</Link>
+							</section>
+						)}
+					</section>
 				</section>
 				<section className='summary__box'>
 					{cart && cart.length > 0 ? (

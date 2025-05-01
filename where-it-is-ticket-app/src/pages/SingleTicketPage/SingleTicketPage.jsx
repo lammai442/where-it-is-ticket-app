@@ -96,8 +96,12 @@ function SingleTicketPage() {
 											<p>Section C</p>
 										</section>
 										<section className='ticket__bar-code-box'>
-											<img src='' alt='' />
-											<p>{event.ticketsId}</p>
+											<Barcode
+												value={event.ticketsId}
+												width={1}
+												height={40}
+												background='transparent'
+											/>
 										</section>
 									</section>
 								</SwiperSlide>

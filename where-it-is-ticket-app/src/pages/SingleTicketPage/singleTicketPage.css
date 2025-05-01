@@ -1,12 +1,11 @@
 .swiper__ticket {
-	height: 400px;
+	height: 470px;
 	width: 330px;
 	overflow-y: auto;
 	position: relative;
 }
 
 .ticket__box {
-	height: 500px;
 	max-width: 285px;
 	border: 1px solid white;
 	border-radius: 5px;
@@ -81,5 +80,9 @@
 }
 
 .ticket__bar-code-box {
+	padding: 1rem 0;
 	background-color: var(--black-text-12opacity-color);
+	display: grid;
+	place-content: center;
+	height: 100%;
 }
