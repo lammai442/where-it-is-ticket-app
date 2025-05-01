@@ -9,10 +9,12 @@ import { CiCirclePlus } from 'react-icons/ci';
 import { Link } from 'react-router-dom';
 import useTicketsStore from '../../stores/useTicketsStore';
 import { v4 as uuidv4 } from 'uuid';
+import { FaTrashAlt } from 'react-icons/fa';
 function OrderPage() {
 	const { cart, updateQtyToCart, emptyCart } = useCartStore();
-	const [totalAmount, setTotalAmount] = useState(0);
 	const { addOrder } = useTicketsStore();
+	const [totalAmount, setTotalAmount] = useState(0);
+	const [emtypOrders, setEmptyOrders] = useState(false);
 
 	useEffect(() => {
 		let eventAmount = 0;
@@ -85,7 +87,7 @@ function OrderPage() {
 								</p>
 								<Link className='link__order-page' to='/events'>
 									<button className='cart__addEventBtn'>
-										<CiCirclePlus />
+										<CiCirclePlus className='cart__empty-circle' />
 									</button>
 								</Link>
 							</section>
@@ -98,6 +100,12 @@ function OrderPage() {
 							<h3 className='summary__title'>
 								Totalt värde på order
 							</h3>
+							<section
+								className='summary__trash-box'
+								onClick={emptyCart}>
+								<FaTrashAlt className='summary__trash' />
+								<p className='summary__trash-text'>Töm order</p>
+							</section>
 							<p className='summary__amount'>{totalAmount} sek</p>
 							<SubmitBtn
 								onClick={handleSendOrder}
