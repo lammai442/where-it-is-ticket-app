@@ -7,7 +7,7 @@ function EventsPage() {
 	return (
 		<div className='page'>
 			<Header text={'Events'} />
-			<main className='main'>
+			<main className='main main__events-page'>
 				<EventList />
 			</main>
 			<Footer />

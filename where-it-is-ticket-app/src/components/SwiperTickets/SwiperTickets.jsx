@@ -1,15 +1,13 @@
 import './swiperTickets.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import useTicketsStore from '../../stores/useTicketsStore';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
-import { useState } from 'react';
+import useTicketsStore from '../../stores/useTicketsStore';
+
 import { Link } from 'react-router-dom';
 
 function SwiperTickets() {
 	const { tickets } = useTicketsStore();
-
-	if (tickets.length > 0) console.log(tickets);
 
 	if (tickets.length === 0) {
 		return <p>Inga biljetter tillgängliga.</p>;
@@ -18,8 +16,8 @@ function SwiperTickets() {
 	return (
 		<Swiper
 			modules={[Pagination, Scrollbar]}
-			spaceBetween={20}
-			slidesPerView={1.2}
+			spaceBetween={8}
+			slidesPerView={1.15}
 			centeredSlides={true}
 			pagination={{ clickable: true, type: 'bullets' }}>
 			{tickets.length > 0 &&

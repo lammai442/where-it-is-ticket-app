@@ -9,10 +9,14 @@ import { CiCirclePlus } from 'react-icons/ci';
 import { Link } from 'react-router-dom';
 import useTicketsStore from '../../stores/useTicketsStore';
 import { v4 as uuidv4 } from 'uuid';
+import { FaTrashAlt } from 'react-icons/fa';
+import ShowMsg from '../../components/ShowMsg/ShowMsg';
 function OrderPage() {
-	const { cart, updateQtyToCart, emptyCart } = useCartStore();
-	const [totalAmount, setTotalAmount] = useState(0);
+	const { cart, updateQtyToCart, emptyCart, removeFromCart } = useCartStore();
 	const { addOrder } = useTicketsStore();
+	const [totalAmount, setTotalAmount] = useState(0);
+	const [emtypOrders, setEmptyOrders] = useState(false);
+	const [showMsg, setShowMsg] = useState(false);
 
 	useEffect(() => {
 		let eventAmount = 0;
@@ -51,9 +55,19 @@ function OrderPage() {
 			orderId: newOrdertId,
 			events: cartWithId,
 		};
+		setShowMsg({
+			type: 'success',
+			text: 'Din order är beställd!',
+		});
+		setTimeout(() => {
+			addOrder(ticket);
+			emptyCart();
+		}, 2000);
+	};
 
-		addOrder(ticket);
-		emptyCart();
+	const handleEmptyCartItem = (id) => {
+		const cartRemovedItem = cart.filter((item) => item.id !== id);
+		removeFromCart(cartRemovedItem);
 	};
 
 	return (
@@ -61,34 +75,37 @@ function OrderPage() {
 			<Header text='Order' />
 			<main className='main main__order-page'>
 				<section className='cart__box'>
-					{cart && cart.length > 0 ? (
-						cart.map((item) => (
-							<CartItem
-								key={item.id}
-								id={item.id}
-								title={item.name}
-								date={item.when.date}
-								from={item.when.from}
-								to={item.when.to}
-								qty={item.qty}
-								handleQtyChange={handleQtyChange}
-							/>
-						))
-					) : (
-						<section className='cart__empty-box'>
-							<p className='cart__empty-msg'>
-								Här ekar det tomt på events.
-							</p>
-							<p className='cart__empty-msg'>
-								Ta mig till min nästa upplevelse!
-							</p>
-							<Link className='link__order-page' to='/events'>
-								<button className='cart__addEventBtn'>
-									<CiCirclePlus />
-								</button>
-							</Link>
-						</section>
-					)}
+					<section className='cart__item-box'>
+						{cart && cart.length > 0 ? (
+							cart.map((item) => (
+								<CartItem
+									key={item.id}
+									id={item.id}
+									title={item.name}
+									date={item.when.date}
+									from={item.when.from}
+									to={item.when.to}
+									qty={item.qty}
+									handleQtyChange={handleQtyChange}
+									handleEmptyCartItem={handleEmptyCartItem}
+								/>
+							))
+						) : (
+							<section className='cart__empty-box'>
+								<p className='cart__empty-msg'>
+									Här ekar det tomt på events.
+								</p>
+								<p className='cart__empty-msg'>
+									Ta mig till min nästa upplevelse!
+								</p>
+								<Link className='link__order-page' to='/events'>
+									<button className='cart__addEventBtn'>
+										<CiCirclePlus className='cart__empty-circle' />
+									</button>
+								</Link>
+							</section>
+						)}
+					</section>
 				</section>
 				<section className='summary__box'>
 					{cart && cart.length > 0 ? (
@@ -96,6 +113,12 @@ function OrderPage() {
 							<h3 className='summary__title'>
 								Totalt värde på order
 							</h3>
+							<section
+								className='summary__trash-box'
+								onClick={emptyCart}>
+								<FaTrashAlt className='summary__trash' />
+								<p className='summary__trash-text'>Töm order</p>
+							</section>
 							<p className='summary__amount'>{totalAmount} sek</p>
 							<SubmitBtn
 								onClick={handleSendOrder}
@@ -103,6 +126,14 @@ function OrderPage() {
 							/>
 						</>
 					) : null}
+
+					{showMsg && (
+						<ShowMsg
+							text={showMsg.text}
+							type={showMsg.type}
+							message={showMsg}
+						/>
+					)}
 				</section>
 			</main>
 			<Footer />

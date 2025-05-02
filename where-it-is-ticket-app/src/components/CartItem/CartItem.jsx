@@ -1,6 +1,16 @@
 import './cartItem.css';
+import { FaTrashAlt } from 'react-icons/fa';
 
-function CartItem({ title, date, from, to, qty, handleQtyChange, id }) {
+function CartItem({
+	title,
+	date,
+	from,
+	to,
+	qty,
+	handleQtyChange,
+	id,
+	handleEmptyCartItem,
+}) {
 	const handleQtyBtn = (e) => {
 		const buttonValue = e.target.value;
 		if (buttonValue === '-') {
@@ -13,6 +23,11 @@ function CartItem({ title, date, from, to, qty, handleQtyChange, id }) {
 
 	return (
 		<section className='cart-item__box'>
+			<button
+				onClick={() => handleEmptyCartItem(id)}
+				className='cart-item__trash-btn'>
+				<FaTrashAlt />
+			</button>
 			<section className='cart-item__top'>
 				<h2 className='cart-item__title'>{title}</h2>
 				<p className='cart-item__sub-title'>
