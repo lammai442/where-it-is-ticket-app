@@ -10,11 +10,13 @@ import { Link } from 'react-router-dom';
 import useTicketsStore from '../../stores/useTicketsStore';
 import { v4 as uuidv4 } from 'uuid';
 import { FaTrashAlt } from 'react-icons/fa';
+import ShowMsg from '../../components/ShowMsg/ShowMsg';
 function OrderPage() {
 	const { cart, updateQtyToCart, emptyCart } = useCartStore();
 	const { addOrder } = useTicketsStore();
 	const [totalAmount, setTotalAmount] = useState(0);
 	const [emtypOrders, setEmptyOrders] = useState(false);
+	const [showMsg, setShowMsg] = useState(false);
 
 	useEffect(() => {
 		let eventAmount = 0;
@@ -53,9 +55,14 @@ function OrderPage() {
 			orderId: newOrdertId,
 			events: cartWithId,
 		};
-
-		addOrder(ticket);
-		emptyCart();
+		setShowMsg({
+			type: 'success',
+			text: 'Din order är beställd!',
+		});
+		setTimeout(() => {
+			addOrder(ticket);
+			emptyCart();
+		}, 2000);
 	};
 
 	return (
@@ -113,6 +120,14 @@ function OrderPage() {
 							/>
 						</>
 					) : null}
+
+					{showMsg && (
+						<ShowMsg
+							text={showMsg.text}
+							type={showMsg.type}
+							message={showMsg}
+						/>
+					)}
 				</section>
 			</main>
 			<Footer />

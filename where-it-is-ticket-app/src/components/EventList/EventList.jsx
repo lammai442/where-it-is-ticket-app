@@ -5,14 +5,16 @@ import { Link } from 'react-router-dom';
 
 function EventList() {
 	const { events } = useEventsStore();
-	console.log(events);
 
 	return (
 		<section className='event-list'>
 			{events &&
 				events.map((event) => {
 					return (
-						<Link key={event.id} to={`/event/${event.id}`}>
+						<Link
+							className='link'
+							key={event.id}
+							to={`/event/${event.id}`}>
 							<EventItem
 								name={event.name}
 								price={event.price}

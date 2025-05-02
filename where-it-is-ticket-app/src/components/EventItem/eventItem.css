@@ -1,5 +1,4 @@
 .event__box {
-	background-color: red;
 	display: flex;
 	flex-direction: row;
 	gap: 1rem;

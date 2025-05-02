@@ -7,10 +7,11 @@ import EventCount from '../../components/EventCount/EventCount';
 import { useEffect, useState } from 'react';
 import SubmitBtn from '../../components/SubmitBtn/SubmitBtn';
 import useCartStore from '../../stores/useCartStore';
-import SeatSelector from '../../components/SeatSelection/SeatSelection';
+import ShowMsg from '../../components/ShowMsg/ShowMsg';
 
 function EventPage() {
 	const [event, setEvent] = useState(null);
+	const [showMsg, setShowMsg] = useState(false);
 	const { id } = useParams();
 	const { events, addQtyToEvent } = useEventsStore();
 	const { addToCart } = useCartStore();
@@ -38,6 +39,10 @@ function EventPage() {
 
 	const handleSubmitBtn = () => {
 		addToCart(event);
+		setShowMsg({
+			type: 'success',
+			text: 'Dina events har lagts till i order',
+		});
 	};
 
 	return (
@@ -65,11 +70,17 @@ function EventPage() {
 							handleQtyChange={handleQtyChange}
 						/>
 
-						<SeatSelector />
 						<SubmitBtn
 							onClick={handleSubmitBtn}
 							text={'Lägg i varukorgen'}
 						/>
+						{showMsg && (
+							<ShowMsg
+								text={showMsg.text}
+								type={showMsg.type}
+								message={showMsg}
+							/>
+						)}
 					</>
 				)}
 			</main>
