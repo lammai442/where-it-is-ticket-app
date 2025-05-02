@@ -12,6 +12,17 @@
 	border-bottom: 1px solid var(--secondary-bg-color);
 }
 
+.cart-item__trash-btn {
+	background-color: transparent;
+	border: none;
+	color: var(--red-text-color);
+	position: absolute;
+	top: 0.5rem;
+	right: 0.5rem;
+	padding: 0.5rem;
+	font-size: 1rem;
+}
+
 .cart-item__title {
 	font-size: 1.5rem;
 	font-weight: 600;

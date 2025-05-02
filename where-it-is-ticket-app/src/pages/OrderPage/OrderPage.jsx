@@ -12,7 +12,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { FaTrashAlt } from 'react-icons/fa';
 import ShowMsg from '../../components/ShowMsg/ShowMsg';
 function OrderPage() {
-	const { cart, updateQtyToCart, emptyCart } = useCartStore();
+	const { cart, updateQtyToCart, emptyCart, removeFromCart } = useCartStore();
 	const { addOrder } = useTicketsStore();
 	const [totalAmount, setTotalAmount] = useState(0);
 	const [emtypOrders, setEmptyOrders] = useState(false);
@@ -65,6 +65,11 @@ function OrderPage() {
 		}, 2000);
 	};
 
+	const handleEmptyCartItem = (id) => {
+		const cartRemovedItem = cart.filter((item) => item.id !== id);
+		removeFromCart(cartRemovedItem);
+	};
+
 	return (
 		<div className='page'>
 			<Header text='Order' />
@@ -82,6 +87,7 @@ function OrderPage() {
 									to={item.when.to}
 									qty={item.qty}
 									handleQtyChange={handleQtyChange}
+									handleEmptyCartItem={handleEmptyCartItem}
 								/>
 							))
 						) : (
