@@ -15,7 +15,6 @@ function OrderPage() {
 	const { cart, updateQtyToCart, emptyCart, removeFromCart } = useCartStore();
 	const { addOrder } = useTicketsStore();
 	const [totalAmount, setTotalAmount] = useState(0);
-	const [emtypOrders, setEmptyOrders] = useState(false);
 	const [showMsg, setShowMsg] = useState(false);
 
 	useEffect(() => {

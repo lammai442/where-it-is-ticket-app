@@ -3,8 +3,8 @@ import useEventsStore from '../../stores/useEventsStore';
 import EventItem from '../EventItem/EventItem';
 import { Link } from 'react-router-dom';
 
-function EventList() {
-	const { events } = useEventsStore();
+function EventList({ events }) {
+	// const { events } = useEventsStore();
 
 	return (
 		<section className='event-list'>

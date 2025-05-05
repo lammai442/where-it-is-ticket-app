@@ -28,6 +28,7 @@
 	--red-text-color: #cb4b4b;
 	--white-text-color: #ffffff;
 	--white-text-80opacity-color: rgba(255, 255, 255, 0.8);
+	--white-text-10opacity-color: rgba(255, 255, 255, 0.1);
 	--black-text-color: #000000;
 	--black-text-70opacity-color: rgb(0, 0, 0, 0.7);
 	--black-text-60opacity-color: rgb(0, 0, 0, 0.6);
