@@ -16,9 +16,6 @@
 	color: var(--white-text-color);
 }
 
-.empty-search__box {
-}
-
 .empty-search__text {
 	font-family: var(--secondary-font);
 	color: var(--white-text-color);

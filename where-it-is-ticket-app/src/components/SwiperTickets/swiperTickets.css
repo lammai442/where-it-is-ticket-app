@@ -58,3 +58,19 @@
 	list-style-type: none;
 	font-family: var(--secondary-font);
 }
+
+.cart__empty-box {
+	margin-top: 35%;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.tickets__empty-msg {
+	color: var(--white-text-color);
+	text-align: center;
+}
+
+.tickets__empty-circle {
+	color: var(--white-text-color);
+}

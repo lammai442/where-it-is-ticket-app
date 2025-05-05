@@ -8,14 +8,12 @@ import { useEffect, useState } from 'react';
 import SubmitBtn from '../../components/SubmitBtn/SubmitBtn';
 import useCartStore from '../../stores/useCartStore';
 import ShowMsg from '../../components/ShowMsg/ShowMsg';
-import { randomLetter, randomSeat } from '../../utils/utils';
 import useTicketsStore from '../../stores/useTicketsStore';
 
 function EventPage() {
 	const [event, setEvent] = useState(null);
 	const [showMsg, setShowMsg] = useState(false);
 	const { id } = useParams();
-	const { tickets } = useTicketsStore();
 	const { events, addQtyToEvent } = useEventsStore();
 	const { addToCart } = useCartStore();
 

@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 const useRandomSeat = (tickets, qty, id) => {
 	let isSeatAvaile = false;
 	const seat = [];
@@ -15,7 +17,12 @@ const useRandomSeat = (tickets, qty, id) => {
 
 		for (let i = 0; i < qty; i++) {
 			const suggestedSeat = randomLetter + (startNumber + i);
-			newSeat.push(suggestedSeat);
+			const newOrdertId = uuidv4().slice(0, 8);
+			const suggestedSeatWithId = {
+				seat: suggestedSeat,
+				id: newOrdertId,
+			};
+			newSeat.push(suggestedSeatWithId);
 		}
 
 		// Filtrerar alla events i tickets som matchar id
@@ -30,20 +37,16 @@ const useRandomSeat = (tickets, qty, id) => {
 			});
 		});
 
-		// Leta efter om det
-		const matchSeat = foundSeats.some((seat) => newSeat.includes(seat));
-
-		if (matchSeat) {
-			console.log('Det finns redan ' + newSeat);
-		} else {
-			console.log('Ingen matchning och seat kan loggas');
-
+		// Leta efter om det nya förslagna platserna redan finns i tickets
+		const isNewSeatsInTickets = foundSeats.some((seat) =>
+			newSeat.includes(seat.seat)
+		);
+		// Om matchSeat är false så avslutas loopen och lägger in newSeat i seat som returneras från hooken
+		if (!isNewSeatsInTickets) {
 			seat.push(newSeat);
 			isSeatAvaile = true;
 		}
 	}
-
-	console.log(seat);
 
 	return seat;
 };
