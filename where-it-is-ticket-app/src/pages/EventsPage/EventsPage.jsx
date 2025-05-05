@@ -8,6 +8,7 @@ function EventsPage() {
 	const { events } = useEventsStore();
 	const [filteredEvents, setFilteredEvents] = useState([]);
 
+	// UseEffect för att invänta så att
 	useEffect(() => {
 		setFilteredEvents(events);
 	}, [events]);
