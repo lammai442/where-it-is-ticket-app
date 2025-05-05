@@ -11,8 +11,10 @@ import useTicketsStore from '../../stores/useTicketsStore';
 import { v4 as uuidv4 } from 'uuid';
 import { FaTrashAlt } from 'react-icons/fa';
 import ShowMsg from '../../components/ShowMsg/ShowMsg';
+import useRandomSeat from '../../hooks/useRandomSeat';
 function OrderPage() {
 	const { cart, updateQtyToCart, emptyCart, removeFromCart } = useCartStore();
+	const { tickets } = useTicketsStore();
 	const { addOrder } = useTicketsStore();
 	const [totalAmount, setTotalAmount] = useState(0);
 	const [showMsg, setShowMsg] = useState(false);
@@ -39,10 +41,17 @@ function OrderPage() {
 	};
 
 	const handleSendOrder = () => {
+		// Skapar sittplatser till varje event
+		const cartWithSeat = cart.map((item) => {
+			const seat = useRandomSeat(tickets, item.qty, item.id);
+			const newItem = { ...item, seat: seat };
+			return newItem;
+		});
+
 		const newOrdertId = uuidv4().slice(0, 8);
 
-		const cartWithId = cart.map((event) => {
-			// Skapar en ny unik id för denna ticket
+		const cartWithId = cartWithSeat.map((event) => {
+			// Skapar en ny unik 8 siffrig id för varje ticket
 			const newTicketsId = uuidv4().slice(0, 8);
 			return {
 				...event,
@@ -56,12 +65,10 @@ function OrderPage() {
 		};
 		setShowMsg({
 			type: 'success',
-			text: 'Din order är beställd!',
+			text: 'Nice, din order är beställd!',
 		});
-		setTimeout(() => {
-			addOrder(ticket);
-			emptyCart();
-		}, 2000);
+		addOrder(ticket);
+		emptyCart();
 	};
 
 	const handleEmptyCartItem = (id) => {
@@ -125,16 +132,15 @@ function OrderPage() {
 							/>
 						</>
 					) : null}
-
-					{showMsg && (
-						<ShowMsg
-							text={showMsg.text}
-							type={showMsg.type}
-							message={showMsg}
-						/>
-					)}
 				</section>
 			</main>
+			{showMsg && (
+				<ShowMsg
+					text={showMsg.text}
+					type={showMsg.type}
+					message={showMsg}
+				/>
+			)}
 			<Footer />
 		</div>
 	);

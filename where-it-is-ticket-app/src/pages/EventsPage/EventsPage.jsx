@@ -7,16 +7,20 @@ import { useEffect, useState } from 'react';
 function EventsPage() {
 	const { events } = useEventsStore();
 	const [filteredEvents, setFilteredEvents] = useState([]);
+	const [searchValue, setSearchValue] = useState('');
 
-	// UseEffect för att invänta så att
+	// UseEffect för att invänta så att events har hunnits ladda från Api
 	useEffect(() => {
 		setFilteredEvents(events);
 	}, [events]);
 
+	// När användaren lägger skriver i inputfältet eller får förslag på event
 	const handleInput = (value) => {
+		setSearchValue(value);
 		const filteredSearch = events.filter((event) =>
-			event.name.toLowerCase().includes(value)
+			event.name.toLowerCase().includes(value.toLowerCase())
 		);
+
 		if (filteredSearch.length > 0) setFilteredEvents(filteredSearch);
 		else setFilteredEvents(false);
 	};
@@ -37,10 +41,10 @@ function EventsPage() {
 					<input
 						className='search-input'
 						type='text'
+						name='searchInput'
 						placeholder='Sök efter nästa event'
-						onChange={(e) =>
-							handleInput(e.target.value.toLowerCase())
-						}
+						onChange={(e) => handleInput(e.target.value)}
+						value={searchValue}
 					/>
 				</label>
 				{filteredEvents ? (
@@ -48,10 +52,18 @@ function EventsPage() {
 				) : (
 					<section className='empty-search__box'>
 						<p className='empty-search__text'>
-							Din sökning hittade inte några events. Men trösta
-							dig inte, för vi har konsert till{' '}
-							{suggestedEvents[Math.floor(Math.random() * 5)]}
+							Din sökning hittade inte några events.
 						</p>
+						<p className='empty-search__text'>
+							Men trösta dig inte, för vi har konsert till
+						</p>
+						<strong
+							className='empty-search__text-suggestion'
+							onClick={(e) => {
+								handleInput(e.target.textContent);
+							}}>
+							{suggestedEvents[Math.floor(Math.random() * 5)]}
+						</strong>
 					</section>
 				)}
 			</main>

@@ -1,36 +1,23 @@
 .nav__list-item {
 	list-style-type: none;
-	/* min-width: 80px; */
-	max-width: 150px;
-	padding: 0.5rem 1.5rem;
+	padding: 0.5rem 1rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+}
+
+.nav__icon-box {
+	width: 45px;
+	aspect-ratio: 1;
 	display: grid;
 	place-content: center;
-	position: relative;
+}
+.nav__icon {
+	font-size: 2rem;
+}
 
-	.nav__icon-box {
-		width: 45px;
-		aspect-ratio: 1;
-		padding: 0.2rem;
-		display: grid;
-		place-content: center;
-
-		.nav__icon {
-			color: var(--primary-bg-color);
-			font-size: 2rem;
-			display: grid;
-			place-content: center;
-		}
-		.nav__icon--active {
-			color: var(--white-text-color);
-		}
-	}
-
-	.nav__title {
-		font-family: var(--primary-font);
-		text-align: center;
-	}
-
-	.nav__title--active {
-		color: var(--white-text-color);
-	}
+.nav__icon--active,
+.nav__title--active {
+	color: var(--white-text-color);
 }

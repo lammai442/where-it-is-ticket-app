@@ -23,3 +23,9 @@
 	font-family: var(--secondary-font);
 	color: var(--white-text-color);
 }
+
+.empty-search__text-suggestion {
+	font-family: var(--secondary-font);
+	color: var(--white-text-color);
+	font-weight: 700;
+}

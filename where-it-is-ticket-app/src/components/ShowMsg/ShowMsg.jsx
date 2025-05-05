@@ -16,12 +16,18 @@ function ShowMsg({ type, text, message }) {
 	if (!visible) return null;
 
 	return (
-		<section
-			className={`msg__box ${
-				type === 'success' ? 'success' : type === 'error' ? 'error' : ''
-			}`}>
+		<section className='msg__box' onClick={() => setVisible(null)}>
 			{/* <img src={Logo} alt='Image of logo' className='msg__logo' /> */}
-			<p>{text}</p>
+			<p
+				className={`${
+					type === 'success'
+						? 'success'
+						: type === 'error'
+						? 'error'
+						: ''
+				}`}>
+				{text}
+			</p>
 		</section>
 	);
 }

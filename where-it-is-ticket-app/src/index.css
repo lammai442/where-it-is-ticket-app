@@ -17,6 +17,7 @@
 :root {
 	--primary-bg-color: #231f42;
 	--secondary-bg-color: #f56b9a;
+	--secondary-bg-60-opacity-color: rgb(245, 107, 154, 0.6);
 	--purple-bg-color: #bb6ac9;
 	--green-bg-color: #37aeab;
 	--white-bg-color: #ffffff;
