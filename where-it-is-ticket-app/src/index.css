@@ -58,7 +58,7 @@ body {
 	justify-content: space-between;
 }
 
-.page--gradient {
+.page__gradient {
 	background: linear-gradient(
 		to bottom,
 		var(--secondary-bg-color) 0%,

@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 const useRandomSeat = (tickets, qty, id) => {
 	let isSeatAvaile = false;
-	const seat = [];
+	let seat = null;
 
 	while (!isSeatAvaile) {
 		let newSeat = [];
@@ -43,7 +43,8 @@ const useRandomSeat = (tickets, qty, id) => {
 		);
 		// Om matchSeat är false så avslutas loopen och lägger in newSeat i seat som returneras från hooken
 		if (!isNewSeatsInTickets) {
-			seat.push(newSeat);
+			// seat.push(newSeat);
+			seat = newSeat;
 			isSeatAvaile = true;
 		}
 	}

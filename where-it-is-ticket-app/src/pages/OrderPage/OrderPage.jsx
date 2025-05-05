@@ -44,6 +44,8 @@ function OrderPage() {
 		// Skapar sittplatser till varje event
 		const cartWithSeat = cart.map((item) => {
 			const seat = useRandomSeat(tickets, item.qty, item.id);
+			console.log(seat);
+
 			const newItem = { ...item, seat: seat };
 			return newItem;
 		});
