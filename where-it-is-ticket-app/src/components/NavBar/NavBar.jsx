@@ -9,7 +9,7 @@ function NavBar() {
 	return (
 		<nav>
 			<ul className='nav__list'>
-				<NavLink to='/' className='link'>
+				<NavLink to='/' className='link link__nav-bar'>
 					{({ isActive }) => (
 						<NavItem
 							text={'Hem'}
@@ -18,7 +18,7 @@ function NavBar() {
 						/>
 					)}
 				</NavLink>
-				<NavLink to='/events' className='link'>
+				<NavLink to='/events' className='link link__nav-bar'>
 					{({ isActive }) => (
 						<NavItem
 							text={'Sök'}
@@ -27,7 +27,7 @@ function NavBar() {
 						/>
 					)}
 				</NavLink>
-				<NavLink to='/order' className='link'>
+				<NavLink to='/order' className='link link__nav-bar'>
 					{({ isActive }) => (
 						<NavItem
 							text={'Order'}
@@ -37,10 +37,10 @@ function NavBar() {
 						/>
 					)}
 				</NavLink>
-				<NavLink to='/tickets' className='link'>
+				<NavLink to='/tickets' className='link link__nav-bar'>
 					{({ isActive }) => (
 						<NavItem
-							text={'Biljett'}
+							text={'Biljetter'}
 							Icon={IoTicketOutline}
 							isActive={isActive}
 						/>

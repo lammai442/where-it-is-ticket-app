@@ -16,10 +16,18 @@
 	color: var(--white-text-color);
 }
 
-.empty-search__box {
+.empty-search__text,
+.empty-search__text-suggestion {
+	text-align: center;
+	line-height: 1.3rem;
 }
-
 .empty-search__text {
 	font-family: var(--secondary-font);
 	color: var(--white-text-color);
+}
+
+.empty-search__text-suggestion {
+	font-family: var(--secondary-font);
+	color: var(--white-text-color);
+	font-weight: 700;
 }

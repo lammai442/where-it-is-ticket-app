@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import SubmitBtn from '../../components/SubmitBtn/SubmitBtn';
 import useCartStore from '../../stores/useCartStore';
 import ShowMsg from '../../components/ShowMsg/ShowMsg';
+import useTicketsStore from '../../stores/useTicketsStore';
 
 function EventPage() {
 	const [event, setEvent] = useState(null);
@@ -38,11 +39,18 @@ function EventPage() {
 	};
 
 	const handleSubmitBtn = () => {
-		addToCart(event);
-		setShowMsg({
-			type: 'success',
-			text: 'Dina events har lagts till i order',
-		});
+		if (event.qty > 0) {
+			addToCart(event);
+			setShowMsg({
+				type: 'success',
+				text: 'Yey, ditt event har lagts till i order',
+			});
+		} else {
+			setShowMsg({
+				type: 'error',
+				text: 'Oops, du behöver lägga till minst en biljett',
+			});
+		}
 	};
 
 	return (

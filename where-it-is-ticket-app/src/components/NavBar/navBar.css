@@ -1,5 +1,8 @@
 .nav__list {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+}
+
+.link__nav-bar {
+	flex: 1;
 }

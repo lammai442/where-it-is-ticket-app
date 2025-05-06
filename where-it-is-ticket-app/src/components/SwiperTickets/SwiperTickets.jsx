@@ -1,52 +1,87 @@
 import './swiperTickets.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
+import { CiCirclePlus } from 'react-icons/ci';
 import useTicketsStore from '../../stores/useTicketsStore';
-
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 function SwiperTickets() {
 	const { tickets } = useTicketsStore();
+	const [reversedTickets, setReversedTickets] = useState([]);
 
-	if (tickets.length === 0) {
-		return <p>Inga biljetter tillgängliga.</p>;
+	useEffect(() => {
+		// Vänder på ordningen av arrayen så att senaste lagda order kommer först.
+		const reversedTicketsArray = [...tickets].reverse();
+		setReversedTickets(reversedTicketsArray);
+		console.log(tickets);
+	}, [tickets]);
+
+	if (reversedTickets.length === 0) {
+		return (
+			<section className='cart__empty-box'>
+				<p className='tickets__empty-msg'>
+					Här ekar det tomt på biljetter.
+				</p>
+				<p className='tickets__empty-msg'>
+					Ta mig till min nästa upplevelse!
+				</p>
+				<Link className='link__order-page' to='/events'>
+					<button className='cart__addEventBtn'>
+						<CiCirclePlus className='tickets__empty-circle' />
+					</button>
+				</Link>
+			</section>
+		);
 	}
 
 	return (
-		<Swiper
-			modules={[Pagination, Scrollbar]}
-			spaceBetween={8}
-			slidesPerView={1.15}
-			centeredSlides={true}
-			pagination={{ clickable: true, type: 'bullets' }}>
-			{tickets.length > 0 &&
-				tickets.map((ticket) => {
+		<Swiper spaceBetween={8} slidesPerView={1.15} centeredSlides={true}>
+			{reversedTickets.length > 0 &&
+				reversedTickets.map((reversedTicket) => {
 					return (
-						<SwiperSlide key={ticket.orderId}>
+						<SwiperSlide key={reversedTicket.orderId}>
 							<Link
 								className='link'
-								to={`/single-ticket/${ticket.orderId}`}>
+								to={`/single-ticket/${reversedTicket.orderId}`}>
 								<section className='order__box'>
-									<h2 className='order__title'>
-										Ordernummer: {ticket.orderId}
-									</h2>
-									<p>Antal events: {ticket.events.length}</p>
 									<section>
-										<p>Konserter:</p>
-										{ticket.events.map((event) => {
-											return (
-												<p key={event.id}>
-													- {event.name} ({event.qty}{' '}
-													{event.qty < 2
-														? 'biljett'
-														: 'biljetter'}
-													)
-												</p>
-											);
-										})}
+										<h2 className='order__title'>
+											Ordernummer:
+										</h2>
+										<p className='order__title-order-id'>
+											{reversedTicket.orderId}
+										</p>
 									</section>
-									<p></p>
+									<p className='order__text'>
+										<strong className='order__text'>
+											Antal events:{' '}
+										</strong>
+										{reversedTicket.events.length}
+									</p>
+									<section>
+										<ul className='order__list'>
+											<strong className='order__text'>
+												Konserter:
+											</strong>
+											{reversedTicket.events.map(
+												(event) => {
+													return (
+														<li
+															key={event.id}
+															className='order__list-item'>
+															- {event.name} (
+															{event.qty}{' '}
+															{event.qty < 2
+																? 'biljett'
+																: 'biljetter'}
+															)
+														</li>
+													);
+												}
+											)}
+										</ul>
+									</section>
 								</section>
 							</Link>
 						</SwiperSlide>

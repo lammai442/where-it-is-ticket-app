@@ -1,23 +1,25 @@
 .msg__box {
-	width: 80%;
-	/* Fixerar meddelandet på skärmen */
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	/* Flyttar det 50% av sin egen bredd/höjd */
-	transform: translate(-50%, -50%);
-	background-color: white;
-	padding: 20px;
-	border-radius: 8px;
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-	text-align: center;
+	height: 100vh;
+	width: 100vw;
+	position: absolute;
+	top: 0;
+	z-index: 999;
+	display: grid;
+	place-content: center;
+	background-color: var(--white-text-80opacity-color);
+	color: white;
 }
 .success {
 	background-color: var(--secondary-bg-color);
-	color: white;
+	padding: 2rem;
+	border-radius: 10px;
 }
 
 .error {
+	width: 80%;
+	justify-self: center;
 	background-color: rgb(194, 0, 0);
-	color: white;
+	padding: 2rem;
+	border-radius: 10px;
+	text-align: center;
 }
