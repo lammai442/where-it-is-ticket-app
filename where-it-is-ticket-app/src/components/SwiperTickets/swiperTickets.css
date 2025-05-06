@@ -60,10 +60,10 @@
 }
 
 .cart__empty-box {
-	margin-top: 35%;
+	margin-top: 20%;
 	display: flex;
 	flex-direction: column;
-	gap: 0.5rem;
+	gap: 0.8rem;
 }
 
 .tickets__empty-msg {

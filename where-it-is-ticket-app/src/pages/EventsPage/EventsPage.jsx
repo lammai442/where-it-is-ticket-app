@@ -4,6 +4,7 @@ import Header from '../../components/Header/Header';
 import EventList from '../../components/EventList/EventList';
 import useEventsStore from '../../stores/useEventsStore';
 import { useEffect, useState } from 'react';
+import { suggestedEvents } from '../../data/data.js';
 function EventsPage() {
 	const { events } = useEventsStore();
 	const [filteredEvents, setFilteredEvents] = useState([]);
@@ -24,14 +25,6 @@ function EventsPage() {
 		if (filteredSearch.length > 0) setFilteredEvents(filteredSearch);
 		else setFilteredEvents(false);
 	};
-
-	const suggestedEvents = [
-		'Lasse-Stefanz',
-		'Pelle trubadur',
-		'Kajsas kör',
-		'Klubb Untz',
-		'Greats symfoniker',
-	];
 
 	return (
 		<div className='page'>
@@ -54,7 +47,7 @@ function EventsPage() {
 						<p className='empty-search__text'>
 							Din sökning hittade inte några events.
 						</p>
-						<p className='empty-search__text'>
+						<p className='empty-search__text empty-search__text--margin'>
 							Men trösta dig inte, kanske vill du uppleva en
 							hejdundrans konsert med
 						</p>

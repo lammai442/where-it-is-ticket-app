@@ -26,6 +26,10 @@
 	color: var(--white-text-color);
 }
 
+.empty-search__text--margin {
+	margin-top: 0.3rem;
+}
+
 .empty-search__text-suggestion {
 	font-family: var(--secondary-font);
 	color: var(--white-text-color);
