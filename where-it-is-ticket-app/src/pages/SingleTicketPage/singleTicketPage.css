@@ -1,8 +1,27 @@
+.main__single-ticket-page {
+	padding: 0;
+}
+
 .swiper__ticket {
 	height: 470px;
 	width: 330px;
 	overflow-y: auto;
 	position: relative;
+}
+
+.swiper__ticket::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	width: 140%;
+	height: 130px;
+	background: linear-gradient(
+		to bottom,
+		transparent 0%,
+		var(--primary-bg-color) 100%
+	);
+	pointer-events: none;
+	z-index: 999;
 }
 
 .ticket__list-box {
@@ -24,21 +43,24 @@
 	flex-direction: column;
 }
 
-.ticket__box::before {
+/* .ticket__box::before {
 	content: '';
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	width: 101%;
+	width: 100%;
 	height: 100px;
 	background: linear-gradient(
 		to bottom,
 		transparent 0%,
 		var(--primary-bg-color) 100%
 	);
-	/* Denna gör så att det inte blockerar klick eller scroll */
 	pointer-events: none;
-	z-index: 999;
+	z-index: 9999;
+} */
+
+.ticket__box.hide-gradient::before {
+	display: none;
 }
 
 .swiper__ticket .swiper-slide {

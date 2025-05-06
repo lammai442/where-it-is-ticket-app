@@ -55,15 +55,17 @@ function EventsPage() {
 							Din sökning hittade inte några events.
 						</p>
 						<p className='empty-search__text'>
-							Men trösta dig inte, för vi har konsert till
+							Men trösta dig inte, kanske vill du uppleva en
+							hejdundrans konsert med
 						</p>
-						<strong
+						<p
 							className='empty-search__text-suggestion'
 							onClick={(e) => {
-								handleInput(e.target.textContent);
+								handleInput(e.target.textContent.slice(0, -21));
 							}}>
-							{suggestedEvents[Math.floor(Math.random() * 5)]}
-						</strong>
+							{suggestedEvents[Math.floor(Math.random() * 5)]}?{' '}
+							<br /> Yes, visa mig det!
+						</p>
 					</section>
 				)}
 			</main>

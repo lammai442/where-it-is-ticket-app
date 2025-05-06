@@ -6,7 +6,6 @@ import './singleTicketPage.css';
 import { useEffect, useState } from 'react';
 import './singleTicketPage.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Scrollbar } from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
 import Barcode from 'react-barcode';
 
@@ -33,10 +32,9 @@ function SingleTicketPage() {
 				backBtn={true}
 				linkTo={'tickets'}
 			/>
-			<main className='main main__order-page'>
+			<main className='main main__single-ticket-page'>
 				<Swiper
 					className='swiper__ticket'
-					modules={[Pagination, Scrollbar]}
 					spaceBetween={8}
 					slidesPerView={1.15}
 					centeredSlides={true}>
