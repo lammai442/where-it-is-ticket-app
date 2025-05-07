@@ -1,7 +1,18 @@
 import CartCounter from '../CartCounter/CartCounter';
 import './navItem.css';
+import { useEffect } from 'react';
+import useNotifyStore from '../../stores/useNotifyStore';
+function NavItem({ text, Icon, isActive, cartCounter, notify }) {
+	const { updateNotify } = useNotifyStore();
 
-function NavItem({ text, Icon, isActive, cartCounter }) {
+	useEffect(() => {
+		// Kontrollera att notify inte redan är false
+		if (text === 'Biljetter' && isActive && notify) {
+			console.log('biljetter');
+			updateNotify(false);
+		}
+	}, [text, isActive, notify, updateNotify]);
+
 	return (
 		<li className='nav__list-item'>
 			{cartCounter && <CartCounter />}
@@ -9,9 +20,9 @@ function NavItem({ text, Icon, isActive, cartCounter }) {
 				{Icon && (
 					<Icon
 						className={
-							isActive
-								? 'nav__icon nav__icon--active'
-								: 'nav__icon'
+							`nav__icon` +
+							(isActive ? ' nav__icon--active' : '') +
+							(notify ? ' notify' : '')
 						}
 					/>
 				)}

@@ -18,6 +18,7 @@ function EventsPage() {
 	// När användaren lägger skriver i inputfältet eller får förslag på event
 	const handleInput = (value) => {
 		setSearchValue(value);
+		// Filtrerar och sparar endast de som matchar med sökorden
 		const filteredSearch = events.filter((event) =>
 			event.name.toLowerCase().includes(value.toLowerCase())
 		);
@@ -30,7 +31,7 @@ function EventsPage() {
 		<div className='page'>
 			<Header text={'Events'} />
 			<main className='main main__events-page'>
-				<label>
+				<label className='search-input__box'>
 					<input
 						className='search-input'
 						type='text'
@@ -54,6 +55,7 @@ function EventsPage() {
 						<p
 							className='empty-search__text-suggestion'
 							onClick={(e) => {
+								// Tar bort de sista 21 tecken i nedanstående
 								handleInput(e.target.textContent.slice(0, -21));
 							}}>
 							{suggestedEvents[Math.floor(Math.random() * 5)]}?{' '}

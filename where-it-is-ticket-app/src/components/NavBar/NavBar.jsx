@@ -4,8 +4,9 @@ import { IoHome, IoTicketOutline } from 'react-icons/io5';
 import { FaSearch } from 'react-icons/fa';
 import { RiShoppingBasketFill } from 'react-icons/ri';
 import { NavLink } from 'react-router-dom';
-
+import useNotifyStore from '../../stores/useNotifyStore';
 function NavBar() {
+	const { notify } = useNotifyStore();
 	return (
 		<nav>
 			<ul className='nav__list'>
@@ -43,6 +44,7 @@ function NavBar() {
 							text={'Biljetter'}
 							Icon={IoTicketOutline}
 							isActive={isActive}
+							notify={notify}
 						/>
 					)}
 				</NavLink>

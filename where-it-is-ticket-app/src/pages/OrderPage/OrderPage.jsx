@@ -11,10 +11,12 @@ import { FaTrashAlt } from 'react-icons/fa';
 import ShowMsg from '../../components/ShowMsg/ShowMsg';
 import useRandomSeat from '../../hooks/useRandomSeat';
 import EmptyEventsMsg from '../../components/EmptyEventsMsg/EmptyEventsMsg';
+import useNotifyStore from '../../stores/useNotifyStore';
 function OrderPage() {
 	const { cart, updateQtyToCart, emptyCart, removeFromCart } = useCartStore();
 	const { tickets } = useTicketsStore();
 	const { addOrder } = useTicketsStore();
+	const { updateNotify } = useNotifyStore();
 	const [totalAmount, setTotalAmount] = useState(0);
 	const [showMsg, setShowMsg] = useState(false);
 
@@ -68,7 +70,10 @@ function OrderPage() {
 			text: 'Nice, din order är beställd!',
 		});
 		addOrder(ticket);
-		emptyCart();
+		updateNotify(true);
+		setTimeout(() => {
+			emptyCart();
+		}, 2000);
 	};
 
 	const handleEmptyCartItem = (id) => {
@@ -120,13 +125,18 @@ function OrderPage() {
 						</section>
 					</>
 				)}
-				{cart.length === 0 && <EmptyEventsMsg text='events' />}
+				{cart.length === 0 && (
+					<section className='empty-events__order-page-box'>
+						<EmptyEventsMsg text='events' />
+					</section>
+				)}
 			</main>
 			{showMsg && (
 				<ShowMsg
 					text={showMsg.text}
 					type={showMsg.type}
 					message={showMsg}
+					forceEmptyCart={true}
 				/>
 			)}
 			<Footer />

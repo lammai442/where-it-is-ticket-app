@@ -114,6 +114,10 @@
 	font-size: 0.7rem;
 }
 
+.empty-events__order-page-box {
+	margin-top: 0.8rem;
+}
+
 @media screen and (min-width: 390px) {
 	.cart__box {
 		height: 480px;

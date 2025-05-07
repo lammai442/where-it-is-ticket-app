@@ -20,7 +20,11 @@ function SwiperTickets() {
 	}, [tickets]);
 
 	if (reversedTickets.length === 0) {
-		return <EmptyEventsMsg text='biljetter' />;
+		return (
+			<section className='empty-events__tickets-page-box'>
+				<EmptyEventsMsg text='biljetter' />;
+			</section>
+		);
 	}
 
 	return (
