@@ -1,5 +1,5 @@
 import './eventCount.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 function EventCount({ price, qty, handleQtyChange }) {
 	// Sätter totalAmount från början genom att kolla nuvarande qty för event * price

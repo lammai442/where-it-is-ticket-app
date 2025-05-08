@@ -35,6 +35,6 @@
 	}
 }
 
-.notify {
+.wiggle {
 	animation: wiggle 1s ease-in-out infinite;
 }

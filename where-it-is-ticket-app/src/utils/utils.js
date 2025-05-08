@@ -17,4 +17,19 @@ export const randomLetter = () => {
 	return randomLetter;
 };
 
+export const restoreQty = (id, events, setEvents) => {
+	const defaultQtyEvents = events.map((event) => {
+		if (event.id === id) {
+			return {
+				...event,
+				qty: 1,
+			};
+		}
+		// Lämnar övriga events som de är.
+		return event;
+	});
+
+	setEvents(defaultQtyEvents);
+};
+
 export default shortenMonthDate;

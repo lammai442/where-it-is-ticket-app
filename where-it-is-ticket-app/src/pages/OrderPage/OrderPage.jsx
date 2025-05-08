@@ -11,12 +11,12 @@ import { FaTrashAlt } from 'react-icons/fa';
 import ShowMsg from '../../components/ShowMsg/ShowMsg';
 import useRandomSeat from '../../hooks/useRandomSeat';
 import EmptyEventsMsg from '../../components/EmptyEventsMsg/EmptyEventsMsg';
-import useNotifyStore from '../../stores/useNotifyStore';
+import useWiggleStore from '../../stores/useWiggleStore';
 function OrderPage() {
 	const { cart, updateQtyToCart, emptyCart, removeFromCart } = useCartStore();
 	const { tickets } = useTicketsStore();
 	const { addOrder } = useTicketsStore();
-	const { updateNotify } = useNotifyStore();
+	const { actionWiggle } = useWiggleStore();
 	const [totalAmount, setTotalAmount] = useState(0);
 	const [showMsg, setShowMsg] = useState(false);
 
@@ -70,7 +70,7 @@ function OrderPage() {
 			text: 'Nice, din order är beställd!',
 		});
 		addOrder(ticket);
-		updateNotify(true);
+		actionWiggle(true);
 		setTimeout(() => {
 			emptyCart();
 		}, 2000);

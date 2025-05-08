@@ -128,7 +128,7 @@
 	}
 }
 @media screen and (min-width: 400px) {
-	.cart__box {
-		height: 520px;
+	.cart__item-box::before {
+		bottom: 38%;
 	}
 }

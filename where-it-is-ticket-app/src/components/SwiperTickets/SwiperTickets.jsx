@@ -1,11 +1,9 @@
 import './swiperTickets.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
-import { CiCirclePlus } from 'react-icons/ci';
 import useTicketsStore from '../../stores/useTicketsStore';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import Logo from '../Logo/Logo';
 import EmptyEventsMsg from '../EmptyEventsMsg/EmptyEventsMsg';
 
 function SwiperTickets() {
@@ -16,7 +14,6 @@ function SwiperTickets() {
 		// Vänder på ordningen av arrayen så att senaste lagda order kommer först.
 		const reversedTicketsArray = [...tickets].reverse();
 		setReversedTickets(reversedTicketsArray);
-		console.log(tickets);
 	}, [tickets]);
 
 	if (reversedTickets.length === 0) {

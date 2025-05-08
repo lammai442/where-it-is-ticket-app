@@ -1,17 +1,17 @@
 import CartCounter from '../CartCounter/CartCounter';
 import './navItem.css';
 import { useEffect } from 'react';
-import useNotifyStore from '../../stores/useNotifyStore';
-function NavItem({ text, Icon, isActive, cartCounter, notify }) {
-	const { updateNotify } = useNotifyStore();
+import useWiggleStore from '../../stores/useWiggleStore';
+function NavItem({ text, Icon, isActive, cartCounter, wiggle }) {
+	const { actionWiggle } = useWiggleStore();
 
 	useEffect(() => {
 		// Kontrollera att notify inte redan är false
-		if (text === 'Biljetter' && isActive && notify) {
-			console.log('biljetter');
-			updateNotify(false);
+		if (text === 'Biljetter' && isActive && wiggle) {
+			// Vid false så kommer ikonen att sluta wiggle
+			actionWiggle(false);
 		}
-	}, [text, isActive, notify, updateNotify]);
+	}, [text, isActive, wiggle, actionWiggle]);
 
 	return (
 		<li className='nav__list-item'>
@@ -22,7 +22,7 @@ function NavItem({ text, Icon, isActive, cartCounter, notify }) {
 						className={
 							`nav__icon` +
 							(isActive ? ' nav__icon--active' : '') +
-							(notify ? ' notify' : '')
+							(wiggle ? ' wiggle' : '')
 						}
 					/>
 				)}
