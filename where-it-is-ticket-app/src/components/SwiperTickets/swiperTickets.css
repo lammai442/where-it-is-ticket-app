@@ -34,6 +34,10 @@
 	gap: 1rem;
 }
 
+.order__top {
+	border-bottom: 2px solid var(--black-text-40opacity-color);
+}
+
 .order__title {
 	font-size: 1.2rem;
 	text-align: center;
@@ -42,6 +46,7 @@
 .order__title-order-id {
 	font-family: var(--secondary-font);
 	text-align: center;
+	margin-bottom: 0.8rem;
 }
 
 .order__text {

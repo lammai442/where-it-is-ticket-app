@@ -14,7 +14,8 @@
 	color: var(--white-text-color);
 }
 
-.empty-events__add-events-btn {
+.empty-events__circle-icon {
+	place-self: center;
 	background-color: transparent;
 	border: none;
 	color: var(--white-text-color);

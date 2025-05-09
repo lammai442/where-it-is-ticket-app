@@ -31,7 +31,9 @@ function EventsPage() {
 		<div className='page'>
 			<Header text={'Events'} />
 			<main className='main main__events-page'>
-				<label className='search-input__box'>
+				<label
+					className='search-input__box'
+					aria-label='search input field'>
 					<input
 						className='search-input'
 						type='text'

@@ -25,7 +25,8 @@ function CartItem({
 		<section className='cart-item__box'>
 			<button
 				onClick={() => handleEmptyCartItem(id)}
-				className='cart-item__trash-btn'>
+				className='cart-item__trash-btn'
+				aria-label='Empty cart item button'>
 				<FaTrashAlt />
 			</button>
 			<section className='cart-item__top'>

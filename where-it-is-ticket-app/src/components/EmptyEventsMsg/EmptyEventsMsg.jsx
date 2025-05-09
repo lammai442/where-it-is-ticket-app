@@ -5,7 +5,10 @@ import { CiCirclePlus } from 'react-icons/ci';
 function EmptyEventsMsg({ text }) {
 	return (
 		<>
-			<Link className='link__order-page' to='/events'>
+			<Link
+				className='link__order-page'
+				to='/events'
+				aria-label='Link to events page'>
 				<section className='empty-events__box'>
 					<p className='empty-events__msg'>
 						Här ekar det tomt på {text}.
@@ -14,9 +17,9 @@ function EmptyEventsMsg({ text }) {
 					<p className='empty-events__msg'>
 						Ta mig till min nästa upplevelse!
 					</p>
-					<button className='empty-events__add-events-btn'>
+					<figure className='empty-events__circle-icon'>
 						<CiCirclePlus className='empty-events__circle' />
-					</button>
+					</figure>
 				</section>
 			</Link>
 		</>

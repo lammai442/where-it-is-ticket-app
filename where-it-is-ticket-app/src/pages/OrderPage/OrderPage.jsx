@@ -69,7 +69,6 @@ function OrderPage() {
 			type: 'success',
 			text: 'Nice, din order är beställd!',
 		});
-		console.log(ticket);
 
 		addOrder(ticket);
 		actionWiggle(true);
