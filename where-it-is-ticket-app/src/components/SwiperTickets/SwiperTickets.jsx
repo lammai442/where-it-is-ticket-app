@@ -1,10 +1,10 @@
 import './swiperTickets.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
-import { CiCirclePlus } from 'react-icons/ci';
 import useTicketsStore from '../../stores/useTicketsStore';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import EmptyEventsMsg from '../EmptyEventsMsg/EmptyEventsMsg';
 
 function SwiperTickets() {
 	const { tickets } = useTicketsStore();
@@ -14,23 +14,12 @@ function SwiperTickets() {
 		// Vänder på ordningen av arrayen så att senaste lagda order kommer först.
 		const reversedTicketsArray = [...tickets].reverse();
 		setReversedTickets(reversedTicketsArray);
-		console.log(tickets);
 	}, [tickets]);
 
 	if (reversedTickets.length === 0) {
 		return (
-			<section className='cart__empty-box'>
-				<p className='tickets__empty-msg'>
-					Här ekar det tomt på biljetter.
-				</p>
-				<p className='tickets__empty-msg'>
-					Ta mig till min nästa upplevelse!
-				</p>
-				<Link className='link__order-page' to='/events'>
-					<button className='cart__addEventBtn'>
-						<CiCirclePlus className='tickets__empty-circle' />
-					</button>
-				</Link>
+			<section className='empty-events__tickets-page-box'>
+				<EmptyEventsMsg text='biljetter' />;
 			</section>
 		);
 	}

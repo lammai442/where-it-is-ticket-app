@@ -9,12 +9,13 @@ import SubmitBtn from '../../components/SubmitBtn/SubmitBtn';
 import useCartStore from '../../stores/useCartStore';
 import ShowMsg from '../../components/ShowMsg/ShowMsg';
 import useTicketsStore from '../../stores/useTicketsStore';
+import { restoreQty } from '../../utils/utils.js';
 
 function EventPage() {
 	const [event, setEvent] = useState(null);
 	const [showMsg, setShowMsg] = useState(false);
 	const { id } = useParams();
-	const { events, addQtyToEvent } = useEventsStore();
+	const { events, addQtyToEvent, setEvents } = useEventsStore();
 	const { addToCart } = useCartStore();
 
 	// useEffect för att hitta rätt event genom id och rendera på sidan
@@ -40,6 +41,7 @@ function EventPage() {
 
 	const handleSubmitBtn = () => {
 		if (event.qty > 0) {
+			restoreQty(id, events, setEvents);
 			addToCart(event);
 			setShowMsg({
 				type: 'success',

@@ -7,7 +7,7 @@ function TicketsPage() {
 	return (
 		<div className='page page__gradient'>
 			<Header text={'Biljetter'} ticketHeader={true}></Header>
-			<main className='main main__order-page'>
+			<main className='main main__tickets-page'>
 				<SwiperTickets />
 			</main>
 			<Footer />

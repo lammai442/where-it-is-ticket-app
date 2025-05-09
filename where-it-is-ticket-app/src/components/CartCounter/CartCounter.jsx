@@ -5,19 +5,18 @@ import { useEffect, useState } from 'react';
 function CartCounter() {
 	const { cart } = useCartStore();
 	const [cartBalance, setCartBalance] = useState(null);
-	const [popAnimation, setPopAnimation] = useState(false);
 
-	// När cart ändras så kommer cartCounter att synas/tas bort
+	// När cart ändras kommer cartCounter att synas/tas bort
 	useEffect(() => {
 		// Kontroll så att cart finns och inte är tom
 		if (cart && cart.length > 0) {
-			let cartTotalQty = 0;
-			// Loopa igenom cart för att lägga in det i cartQty
-			cart.forEach((event) => {
-				cartTotalQty += event.qty;
-			});
+			// Reduce räknar ihop för varje item som finns i arrayen och adderar det till variabeln
+			const cartTotalCount = cart.reduce(
+				(total, item) => total + item.qty,
+				0
+			);
 
-			setCartBalance(cartTotalQty);
+			setCartBalance(cartTotalCount);
 		} else {
 			// Om cart är tom igen så kommer cartCounter försvinna
 			setCartBalance(null);
@@ -26,10 +25,7 @@ function CartCounter() {
 
 	return (
 		cartBalance && (
-			<div
-				className={`cart-counter__box ${
-					popAnimation ? 'cart-counter__pop' : ''
-				}`}>
+			<div className='cart-counter__box'>
 				<span className='cart-counter__number'>{cartBalance}</span>
 			</div>
 		)

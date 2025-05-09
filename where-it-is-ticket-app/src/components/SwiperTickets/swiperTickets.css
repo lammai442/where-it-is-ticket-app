@@ -59,11 +59,7 @@
 	font-family: var(--secondary-font);
 }
 
-.cart__empty-box {
-	margin-top: 35%;
-	display: flex;
-	flex-direction: column;
-	gap: 0.5rem;
+.empty-events__tickets-page-box {
 }
 
 .tickets__empty-msg {

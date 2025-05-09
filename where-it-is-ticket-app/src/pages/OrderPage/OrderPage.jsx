@@ -5,17 +5,18 @@ import CartItem from '../../components/CartItem/CartItem';
 import { useEffect, useState } from 'react';
 import useCartStore from '../../stores/useCartStore';
 import SubmitBtn from '../../components/SubmitBtn/SubmitBtn';
-import { CiCirclePlus } from 'react-icons/ci';
-import { Link } from 'react-router-dom';
 import useTicketsStore from '../../stores/useTicketsStore';
 import { v4 as uuidv4 } from 'uuid';
 import { FaTrashAlt } from 'react-icons/fa';
 import ShowMsg from '../../components/ShowMsg/ShowMsg';
 import useRandomSeat from '../../hooks/useRandomSeat';
+import EmptyEventsMsg from '../../components/EmptyEventsMsg/EmptyEventsMsg';
+import useWiggleStore from '../../stores/useWiggleStore';
 function OrderPage() {
 	const { cart, updateQtyToCart, emptyCart, removeFromCart } = useCartStore();
 	const { tickets } = useTicketsStore();
 	const { addOrder } = useTicketsStore();
+	const { actionWiggle } = useWiggleStore();
 	const [totalAmount, setTotalAmount] = useState(0);
 	const [showMsg, setShowMsg] = useState(false);
 
@@ -44,7 +45,6 @@ function OrderPage() {
 		// Skapar sittplatser till varje event
 		const cartWithSeat = cart.map((item) => {
 			const seat = useRandomSeat(tickets, item.qty, item.id);
-			console.log(seat);
 
 			const newItem = { ...item, seat: seat };
 			return newItem;
@@ -70,7 +70,10 @@ function OrderPage() {
 			text: 'Nice, din order är beställd!',
 		});
 		addOrder(ticket);
-		emptyCart();
+		actionWiggle(true);
+		setTimeout(() => {
+			emptyCart();
+		}, 2000);
 	};
 
 	const handleEmptyCartItem = (id) => {
@@ -82,42 +85,29 @@ function OrderPage() {
 		<div className='page'>
 			<Header text='Order' />
 			<main className='main main__order-page'>
-				<section className='cart__box'>
-					<section className='cart__item-box'>
-						{cart && cart.length > 0 ? (
-							cart.map((item) => (
-								<CartItem
-									key={item.id}
-									id={item.id}
-									title={item.name}
-									date={item.when.date}
-									from={item.when.from}
-									to={item.when.to}
-									qty={item.qty}
-									handleQtyChange={handleQtyChange}
-									handleEmptyCartItem={handleEmptyCartItem}
-								/>
-							))
-						) : (
-							<section className='cart__empty-box'>
-								<p className='cart__empty-msg'>
-									Här ekar det tomt på events.
-								</p>
-								<p className='cart__empty-msg'>
-									Ta mig till min nästa upplevelse!
-								</p>
-								<Link className='link__order-page' to='/events'>
-									<button className='cart__addEventBtn'>
-										<CiCirclePlus className='cart__empty-circle' />
-									</button>
-								</Link>
+				{cart && cart.length > 0 && (
+					<>
+						<section className='cart__box'>
+							<section className='cart__item-box'>
+								{cart.map((item) => (
+									<CartItem
+										key={item.id}
+										id={item.id}
+										title={item.name}
+										date={item.when.date}
+										from={item.when.from}
+										to={item.when.to}
+										qty={item.qty}
+										handleQtyChange={handleQtyChange}
+										handleEmptyCartItem={
+											handleEmptyCartItem
+										}
+									/>
+								))}
 							</section>
-						)}
-					</section>
-				</section>
-				<section className='summary__box'>
-					{cart && cart.length > 0 ? (
-						<>
+						</section>
+
+						<section className='summary__box'>
 							<h3 className='summary__title'>
 								Totalt värde på order
 							</h3>
@@ -132,15 +122,21 @@ function OrderPage() {
 								onClick={handleSendOrder}
 								text='Skicka order'
 							/>
-						</>
-					) : null}
-				</section>
+						</section>
+					</>
+				)}
+				{cart.length === 0 && (
+					<section className='empty-events__order-page-box'>
+						<EmptyEventsMsg text='events' />
+					</section>
+				)}
 			</main>
 			{showMsg && (
 				<ShowMsg
 					text={showMsg.text}
 					type={showMsg.type}
 					message={showMsg}
+					forceEmptyCart={true}
 				/>
 			)}
 			<Footer />
