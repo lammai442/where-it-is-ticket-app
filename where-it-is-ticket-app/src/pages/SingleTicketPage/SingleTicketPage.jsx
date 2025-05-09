@@ -116,6 +116,7 @@ function SingleTicketPage() {
 														width={1}
 														height={40}
 														background='transparent'
+														className='barcode'
 													/>
 												</section>
 											</section>
