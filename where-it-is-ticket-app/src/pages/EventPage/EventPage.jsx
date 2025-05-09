@@ -60,7 +60,7 @@ function EventPage() {
 
 			<main className='main main__flex'>
 				<p className='main__paragraph'>
-					You are about to score some tickets to
+					Du är på väg att skaffa biljetter till
 				</p>
 				{event && (
 					<>

@@ -20,6 +20,8 @@
 
 .hero__sub-title {
 	font-family: var(--secondary-font);
+	font-style: italic;
 	color: var(--white-text-color);
-	font-size: 1.375rem;
+	font-weight: 300;
+	font-size: 1.275rem;
 }

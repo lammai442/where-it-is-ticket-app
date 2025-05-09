@@ -9,7 +9,9 @@ function HomePage() {
 				<section className='hero'>
 					<Logo />
 					<h1 className='hero__title'>Where It's @</h1>
-					<h2 className='hero__sub-title'>Ticketing made easy</h2>
+					<h2 className='hero__sub-title'>
+						Boka biljetter på ett kick
+					</h2>
 				</section>
 			</main>
 			<Footer />
