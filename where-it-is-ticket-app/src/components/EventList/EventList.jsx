@@ -1,27 +1,26 @@
 import './eventList.css';
-import useEventsStore from '../../stores/useEventsStore';
 import EventItem from '../EventItem/EventItem';
 import { Link } from 'react-router-dom';
 
-function EventList() {
-	const { events } = useEventsStore();
-
-	console.log(events);
-
+function EventList({ events }) {
 	return (
 		<section className='event-list'>
 			{events &&
-				events.events.map((event) => {
+				events.map((event) => {
 					return (
-						<Link to='/event'>
+						<Link
+							className='link'
+							key={event.id}
+							to={`/event/${event.id}`}
+							aria-label='Link to event'>
 							<EventItem
-								key={event.id}
 								name={event.name}
 								price={event.price}
-								date={event.when.date}
+								date={event.when.newDate.day}
 								from={event.when.from}
 								to={event.when.to}
 								where={event.where}
+								month={event.when.newDate.month}
 							/>
 						</Link>
 					);

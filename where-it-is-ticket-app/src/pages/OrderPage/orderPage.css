@@ -1,0 +1,134 @@
+.main__order-page {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 0 2rem 1rem 2rem;
+}
+
+.cart__box {
+	width: 100%;
+	color: var(--white-text-color);
+	display: flex;
+	flex-direction: column;
+	gap: 0.7rem;
+	height: 320px;
+	overflow-y: auto;
+	scrollbar-width: none;
+}
+
+.cart__item-box {
+	display: flex;
+	flex-direction: column;
+	gap: 0.7rem;
+	padding-bottom: 3rem;
+}
+
+/* För att få gradient längst ner när det behöver scrollas */
+.cart__item-box::before {
+	content: '';
+	position: absolute;
+	bottom: 36%;
+	left: 0;
+	width: 100%;
+	/* höjden på fade-effekten */
+	height: 50px;
+	background: linear-gradient(
+		to bottom,
+		transparent,
+		var(--primary-bg-color)
+	);
+	/* Denna gör så att det inte blockerar klick eller scroll */
+	pointer-events: none;
+	z-index: 999;
+}
+
+.cart__empty-box {
+	margin-top: 35%;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.cart__empty-msg {
+	text-align: center;
+}
+
+.cart__empty-circle {
+	color: var(--primary-text-color);
+}
+
+.link__order-page {
+	display: grid;
+	place-content: center;
+}
+
+.cart__addEventBtn {
+	background-color: transparent;
+	border: none;
+	color: var(--white-text-color);
+	font-size: 3rem;
+	padding: 1rem 0;
+}
+
+.summary__box {
+	display: flex;
+	flex-direction: column;
+	gap: 0.6rem;
+	position: relative;
+}
+
+.summary__title {
+	text-align: center;
+	font-size: 1.1rem;
+	font-family: var(--secondary-font);
+	color: var(--white-text-80opacity-color);
+}
+
+.summary__amount {
+	text-align: center;
+	font-size: 2rem;
+	color: var(--white-text-color);
+	font-weight: 600;
+	font-family: var(--secondary-font);
+}
+
+.summary__trash-box {
+	position: absolute;
+	top: 1.86rem;
+	right: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 0.3rem;
+}
+
+.summary__trash {
+	font-size: 1.1rem;
+	color: var(--red-text-color);
+}
+
+.summary__trash-text {
+	color: var(--white-text-color);
+	font-family: var(--secondary-font);
+	font-size: 0.7rem;
+}
+
+.empty-events__order-page-box {
+	margin-top: 0.8rem;
+}
+
+@media screen and (min-width: 390px) {
+	.cart__box {
+		height: 480px;
+	}
+
+	.cart__item-box::before {
+		bottom: 32%;
+	}
+}
+@media screen and (min-width: 400px) {
+	.cart__item-box::before {
+		bottom: 38%;
+	}
+}

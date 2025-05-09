@@ -1,11 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 @font-face {
 	font-family: 'Sansita One';
 	src: url('./assets/fonts/SansitaOne.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 * {
 	margin: 0;
@@ -17,34 +17,63 @@
 :root {
 	--primary-bg-color: #231f42;
 	--secondary-bg-color: #f56b9a;
+	--secondary-bg-60-opacity-color: rgb(245, 107, 154, 0.6);
 	--purple-bg-color: #bb6ac9;
+	--green-bg-color: #37aeab;
+	--white-bg-color: #ffffff;
 
 	--primary-text-color: #f56b9a;
+	--secondary-text-color: #231f42;
 	--green-text-color: #37aeab;
+	--light-green-text-color: rgba(64, 223, 217, 0.848);
+	--red-text-color: #cb4b4b;
 	--white-text-color: #ffffff;
+	--white-text-80opacity-color: rgba(255, 255, 255, 0.8);
+	--white-text-10opacity-color: rgba(255, 255, 255, 0.1);
 	--black-text-color: #000000;
+	--black-text-70opacity-color: rgb(0, 0, 0, 0.7);
+	--black-text-60opacity-color: rgb(0, 0, 0, 0.6);
+	--black-text-40opacity-color: rgb(0, 0, 0, 0.4);
+	--black-text-12opacity-color: rgb(0, 0, 0, 0.12);
+	--black-text-9opacity-color: rgb(0, 0, 0, 0.09);
+	--black-text-6opacity-color: rgb(0, 0, 0, 0.06);
+	--black-text-3opacity-color: rgb(0, 0, 0, 0.03);
 
 	--primary-font: 'Sansita One', sans-serif;
 	--secondary-font: 'Fira Sans', sans-serif;
+	--italic-style: italic;
 }
 
 body {
 	background-color: var(--primary-bg-color);
 }
 
+/* Gör så att det inte blir rött underline på texten när man klickar på en Link */
+a:active {
+	color: inherit;
+}
+
 .page {
 	background-color: var(--primary-bg-color);
 	margin: auto;
-	max-width: 600px;
+	width: 100%;
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
+}
+
+.page__gradient {
+	background: linear-gradient(
+		to bottom,
+		var(--secondary-bg-color) 0%,
+		var(--primary-bg-color) 80%
+	);
 }
 
 .main {
 	flex: 1;
-	display: grid;
-	place-content: center;
+	padding: 0 2rem;
 }
 
 .link {
@@ -55,4 +84,16 @@ body {
 
 .link--active {
 	color: var(--white-text-color);
+}
+
+.simple-click {
+	position: relative;
+	overflow: hidden;
+}
+
+.simple-click:active::after {
+	content: '';
+	position: absolute;
+	background: rgba(0, 0, 0, 0.1);
+	inset: 0;
 }

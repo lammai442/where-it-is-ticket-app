@@ -3,13 +3,23 @@ import './navBar.css';
 import { IoHome, IoTicketOutline } from 'react-icons/io5';
 import { FaSearch } from 'react-icons/fa';
 import { RiShoppingBasketFill } from 'react-icons/ri';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
+import useWiggleStore from '../../stores/useWiggleStore';
 
 function NavBar() {
+	const location = useLocation();
+	const isTicketsActive =
+		location.pathname.startsWith('/tickets') ||
+		location.pathname.startsWith('/single-ticket');
+	const isEventsActive =
+		location.pathname.startsWith('/events') ||
+		location.pathname.startsWith('/event');
+	const { wiggle } = useWiggleStore();
+
 	return (
 		<nav>
 			<ul className='nav__list'>
-				<NavLink to='/' className='link'>
+				<NavLink to='/' className='link link__nav-bar'>
 					{({ isActive }) => (
 						<NavItem
 							text={'Hem'}
@@ -18,30 +28,32 @@ function NavBar() {
 						/>
 					)}
 				</NavLink>
-				<NavLink to='/events' className='link'>
+				<NavLink to='/events' className='link link__nav-bar'>
 					{({ isActive }) => (
 						<NavItem
-							text={'Sök'}
+							text={'Events'}
 							Icon={FaSearch}
-							isActive={isActive}
+							isActive={isEventsActive}
 						/>
 					)}
 				</NavLink>
-				<NavLink to='/order' className='link'>
+				<NavLink to='/order' className='link link__nav-bar'>
 					{({ isActive }) => (
 						<NavItem
 							text={'Order'}
 							Icon={RiShoppingBasketFill}
 							isActive={isActive}
+							cartCounter={true}
 						/>
 					)}
 				</NavLink>
-				<NavLink to='/tickets' className='link'>
+				<NavLink to='/tickets' className='link link__nav-bar'>
 					{({ isActive }) => (
 						<NavItem
-							text={'Biljett'}
+							text={'Biljetter'}
 							Icon={IoTicketOutline}
-							isActive={isActive}
+							isActive={isTicketsActive}
+							wiggle={wiggle}
 						/>
 					)}
 				</NavLink>

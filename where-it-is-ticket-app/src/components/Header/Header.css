@@ -1,7 +1,7 @@
 .header {
 	display: grid;
 	place-content: center;
-	padding: 2rem;
+	padding: 1.5rem 2rem;
 	position: relative;
 }
 
@@ -16,7 +16,12 @@
 	background-color: transparent;
 	border: none;
 	position: absolute;
-	top: 20%;
+	top: 13%;
 	left: 5%;
 	padding: 1rem;
+}
+
+.header__title-ticket-page,
+.header__backBtn-ticket-page {
+	color: var(--secondary-text-color);
 }

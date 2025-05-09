@@ -1,10 +1,11 @@
 import './eventItem.css';
 
-function EventItem({ id, name, price, date, from, to, where }) {
+function EventItem({ name, price, date, from, to, where, month }) {
 	return (
 		<section className='event__box'>
 			<section className='event__left-box'>
 				<p className='event__date'>{date}</p>
+				<p className='event__month'>{month}</p>
 			</section>
 			<section className='event__right-box'>
 				<section className='event__info-left'>
