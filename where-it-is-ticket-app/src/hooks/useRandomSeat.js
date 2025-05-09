@@ -17,10 +17,10 @@ const useRandomSeat = (tickets, qty, id) => {
 
 		for (let i = 0; i < qty; i++) {
 			const suggestedSeat = randomLetter + (startNumber + i);
-			const newOrdertId = uuidv4().slice(0, 8);
+			const newSingleTicketId = '#' + uuidv4().slice(0, 5).toUpperCase();
 			const suggestedSeatWithId = {
 				seat: suggestedSeat,
-				id: newOrdertId,
+				id: newSingleTicketId,
 			};
 			newSeat.push(suggestedSeatWithId);
 		}

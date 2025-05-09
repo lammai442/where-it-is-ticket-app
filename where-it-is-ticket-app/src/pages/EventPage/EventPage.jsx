@@ -8,7 +8,6 @@ import { useEffect, useState } from 'react';
 import SubmitBtn from '../../components/SubmitBtn/SubmitBtn';
 import useCartStore from '../../stores/useCartStore';
 import ShowMsg from '../../components/ShowMsg/ShowMsg';
-import useTicketsStore from '../../stores/useTicketsStore';
 import { restoreQty } from '../../utils/utils.js';
 
 function EventPage() {

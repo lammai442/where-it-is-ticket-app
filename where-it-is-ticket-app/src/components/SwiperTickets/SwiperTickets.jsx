@@ -34,7 +34,7 @@ function SwiperTickets() {
 								className='link'
 								to={`/single-ticket/${reversedTicket.orderId}`}>
 								<section className='order__box'>
-									<section>
+									<section className='order__top'>
 										<h2 className='order__title'>
 											Ordernummer:
 										</h2>

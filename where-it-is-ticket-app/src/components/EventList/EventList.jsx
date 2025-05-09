@@ -11,7 +11,8 @@ function EventList({ events }) {
 						<Link
 							className='link'
 							key={event.id}
-							to={`/event/${event.id}`}>
+							to={`/event/${event.id}`}
+							aria-label='Link to event'>
 							<EventItem
 								name={event.name}
 								price={event.price}
