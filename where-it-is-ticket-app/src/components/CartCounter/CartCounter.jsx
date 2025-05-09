@@ -6,7 +6,7 @@ function CartCounter() {
 	const { cart } = useCartStore();
 	const [cartBalance, setCartBalance] = useState(null);
 
-	// När cart ändras så kommer cartCounter att synas/tas bort
+	// När cart ändras kommer cartCounter att synas/tas bort
 	useEffect(() => {
 		// Kontroll så att cart finns och inte är tom
 		if (cart && cart.length > 0) {
