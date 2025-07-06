@@ -25,21 +25,6 @@
 	scrollbar-width: none;
 }
 
-/* .swiper__ticket::after {
-	content: '';
-	position: absolute;
-	bottom: 0;
-	width: 140%;
-	height: 130px;
-	background: linear-gradient(
-		to bottom,
-		transparent 0%,
-		var(--primary-bg-color) 100%
-	);
-	pointer-events: none;
-	z-index: 999;
-} */
-
 .ticket__list-box {
 	height: 460px;
 	overflow-x: auto;
@@ -58,10 +43,6 @@
 	display: flex;
 	flex-direction: column;
 }
-
-/* .ticket__box.hide-gradient::before {
-	display: none;
-} */
 
 .swiper__ticket .swiper-slide {
 	opacity: 0.5;
@@ -161,13 +142,10 @@
 }
 @media screen and (min-width: 400px) {
 	.swiper__ticket {
-		height: 700px;
+		/* height: 700px; */
 	}
 
 	.ticket__list-box {
 		height: 700px;
 	}
-	/* .main__single-ticket-page::after {
-		bottom: 11%;
-	} */
 }
