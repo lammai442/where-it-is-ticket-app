@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import './header.css';
+import './Header.css';
 import { MdOutlineArrowBackIos } from 'react-icons/md';
 function Header({ text, backBtn, linkTo, ticketHeader }) {
 	return (
